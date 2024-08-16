@@ -6,6 +6,6 @@ export const metadata: Metadata = {
 
 export default async function Page() {
     return(
-        <p>This is Admin's Setting Page.</p>
+        <p>This is Admin Setting Page.</p>
     )
 }
