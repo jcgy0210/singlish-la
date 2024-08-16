@@ -18,6 +18,38 @@ CREATE TABLE IF NOT EXISTS admins (
     email_address TEXT NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS courses (
+    course_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    course_title TEXT NOT NULL,
+    course_description TEXT NOT NULL,
+    FOREIGN KEY(lesson_id) REFERENCES lessons(lesson_id) ON DELETE CASCADE
+    -- FOREIGN KEY(quiz_id) REFERENCES quizes(quiz_id)
+);
+
+CREATE TABLE IF NOT EXISTS lessons (
+    lesson_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    lesson_title TEXT NOT NULL,
+    lesson_description TEXT NOT NULL
+    -- FOREIGN KEY(course_id) REFERENCES courses(course_id),
+    -- FOREIGN KEY(vocab_id) REFERENCES vocabs(vocab_id)
+);
+
+CREATE TABLE IF NOT EXISTS quizes (
+    quiz_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    quiz_title TEXT NOT NULL
+    -- FOREIGN KEY(course_id) REFERENCES courses(course_id),
+    -- FOREIGN KEY(question_id) REFERENCES questions(questions_id)
+);
+
+CREATE TABLE IF NOT EXISTS questions (
+    question_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    question_text TEXT NOT NULL,
+    correct_answer TEXT NOT NULL
+    -- FOREIGN KEY(options_id) REFERENCES options(option_id)
+);
+
+
+
 --  Original 
 -- CREATE TABLE IF NOT EXISTS articles (
 --     article_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -67,5 +99,9 @@ INSERT INTO admins ('admin_id', 'admin_user_name', 'email_address') VALUES (3, '
 
 --  Original
 -- INSERT INTO author_settings('blog_title', 'author_name', 'blog_sub', 'blog_content') VALUES('Default Title', 'Default Name', 'Default Sub', 'Default Content');
+
+INSERT INTO courses ('course_id', 'course_title', 'course_description') VALUES (1, 'Course 1', 'This is course 1');
+
+INSERT INTO lessons ('lesson_id', 'lesson_title', 'lesson_description') VALUES (1, 'Lesson 1', 'This is lesson 1');
 
 COMMIT;
