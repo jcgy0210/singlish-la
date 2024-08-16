@@ -12,10 +12,32 @@ const users = [
   const admins = [
     {
       id: 'f8ce6b6e-0109-48bd-a662-40956f09dc8d',
-      name: 'Admin',
-      email: 'admin@nextmail.com',
+      name: 'Jenell',
+      email: 'jenell@nextmail.com',
       password: 'abcdef',
     },
+
+    {
+      id: '469c7b6a-5306-48c8-b057-697406819032',
+      name: 'Joash',
+      email: 'joash@nextmail.com',
+      password: 'abcdef',
+    },
+
+    {
+      id: '21598349-3802-4f62-b030-3c5bcb62dcc6',
+      name: 'Joe',
+      email: 'joe@nextmail.com',
+      password: 'abcdef',
+    },
+
+    {
+      id: 'c1134209-0fbd-40d9-b3a6-381012e62a65',
+      name: 'Jovan',
+      email: 'jovan@nextmail.com',
+      password: 'abcdef',
+    },
+
   ];  
 
   export { users, admins };
