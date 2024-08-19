@@ -37,7 +37,7 @@ export default function CoursesPage() {
   };
 
   return (
-    <main className="min-h-screen p-4 md:p-8 bg-gray-100">
+    <main className="min-h-screen p-4 md:p-8 bg-gray-100 dark:bg-slate-900">
       <header className="flex justify-between items-center mb-8">
         <a href="\login">
           <Image

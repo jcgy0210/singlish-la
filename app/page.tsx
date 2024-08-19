@@ -1,0 +1,166 @@
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation"; // Import useRouter
+import Image from "next/image";
+
+export default function AuthPage() {
+  const [isSignIn, setIsSignIn] = useState(true);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const router = useRouter(); // Initialize useRouter
+
+  const handleLogin = (e: any) => {
+    e.preventDefault();
+    const dummyEmail = "dummyuser@example.com";
+    const dummyPassword = "123";
+
+    if (email === dummyEmail && password === dummyPassword) {
+      alert("Login successful!");
+      router.push("./home"); // Redirect to the courses page
+    } else {
+      alert("Invalid email or password. Please try again.");
+    }
+  };
+
+  return (
+    <main className="flex min-h-screen items-center justify-center p-4 md:p-8 bg-gray-100">
+      <div className="w-full max-w-md space-y-8">
+        <div className="text-center">
+          <Image
+            src="/SinglishLA.png"
+            alt="Logo"
+            width={200}
+            height={50}
+            priority
+            className="mx-auto"
+          />
+          <h2 className="mt-6 text-2xl md:text-3xl font-extrabold text-[#900603]">
+            {isSignIn ? "Login" : "Create your account"}
+          </h2>
+        </div>
+
+        {isSignIn ? (
+          <form className="mt-8 space-y-6" action="#" method="POST">
+            <input type="hidden" name="remember" defaultValue="true" />
+            <div className="rounded-md shadow-sm -space-y-px">
+              <div>
+                <label htmlFor="email-address" className="sr-only">
+                  Email address
+                </label>
+                <input
+                  id="email-address"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)} // Bind email state
+                  className="relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                  placeholder="Email address"
+                />
+              </div>
+              <div>
+                <label htmlFor="password" className="sr-only">
+                  Password
+                </label>
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  autoComplete="current-password"
+                  required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)} // Bind password state
+                  className="relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                  placeholder="Password"
+                />
+              </div>
+            </div>
+
+            <div className="flex items-center justify-between">
+              <div className="flex items-center">
+                <input
+                  id="remember-me"
+                  name="remember-me"
+                  type="checkbox"
+                  className="h-4 w-4 border-gray-300 rounded"
+                  style={{
+                    accentColor: "#900603", // Sets the checkbox color
+                    borderColor: "#900603", // Sets the border color
+                  }}
+                />
+                <label
+                  htmlFor="remember-me"
+                  className="ml-2 block text-sm text-gray-900"
+                >
+                  Save login info, can ?
+                </label>
+              </div>
+
+              <div className="text-sm">
+                <a
+                  href="#"
+                  className="text-sm font-medium"
+                  style={{
+                    color: "#900603",
+                    backgroundColor: "transparent",
+                    border: "none",
+                    cursor: "pointer",
+                  }}
+                  onMouseOver={(e) => (e.currentTarget.style.color = "#700404")}
+                  onMouseOut={(e) => (e.currentTarget.style.color = "#900603")}
+                >
+                  Forgot password ah?
+                </a>
+              </div>
+            </div>
+
+            <div>
+              <button
+                type="submit"
+                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white"
+                style={{
+                  backgroundColor: "#900603",
+                  boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+                }}
+                onMouseOver={(e) =>
+                  (e.currentTarget.style.backgroundColor = "#700404")
+                }
+                onMouseOut={(e) =>
+                  (e.currentTarget.style.backgroundColor = "#900603")
+                }
+                onClick={handleLogin} // Trigger handleLogin on click
+              >
+                Login leh
+              </button>
+            </div>
+          </form>
+        ) : (
+          <form className="mt-8 space-y-6" action="#" method="POST">
+            {/* ... */}
+          </form>
+        )}
+
+        <div className="text-center">
+          <button
+            onClick={() => setIsSignIn(!isSignIn)}
+            className="text-sm font-medium"
+            style={{
+              color: "#900603",
+              backgroundColor: "transparent",
+              border: "none",
+              cursor: "pointer",
+            }}
+            onMouseOver={(e) => (e.currentTarget.style.color = "#700404")}
+            onMouseOut={(e) => (e.currentTarget.style.color = "#900603")}
+          >
+            {isSignIn
+              ? "No account? Sign up leh"
+              : "Already got account? Log in LA!"}
+          </button>
+        </div>
+      </div>
+    </main>
+  );
+}

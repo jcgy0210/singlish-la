@@ -26,6 +26,10 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+h1{
+  color: #900603 ;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -41,6 +45,7 @@ body {
 
 .notes-section {
   background-color: #900603;
+  border-radius: 20px;
 }
 
 .badge {
@@ -58,8 +63,12 @@ body {
   box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
 }
 
+.continue-button:hover {
+  box-shadow: 4px 4px 10px rgba(0,0,0,0.6);
+}
+
 .continue-button:active {
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.3) inset;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.6) inset;
 }
 
 .progress-bar {
@@ -74,10 +83,6 @@ body {
   height: 800px;
 }
 
-.home-button {
-  color: #900603;
-}
-
 .log-out-button {
   font-size: small;
   background-color: #900603;
@@ -89,3 +94,19 @@ body {
   box-shadow: 2px 2px 5px rgba(0,0,0,0.3) inset;
 }
 
+.menu-button:hover{
+  background-color: #900603;
+  color: white;
+}
+
+#home-button {
+  color: #900603;
+}
+
+#home-button:hover {
+  color: white;
+}
+
+.section-title {
+  color: #900603;
+}

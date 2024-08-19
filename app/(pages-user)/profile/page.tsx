@@ -1,8 +1,11 @@
-export default function ProfilPage() {
+import Link from "next/link";
+
+export default function ProfilePage() {
   return (
-    <main className="grid place-items-center">
-      <div className="profile-page relative flex flex-col w-96 my-20 bg-slate-100 text-black">
-        <a href="\home" className="top-section left-4">
+    <main className="min-h-screen p-4 md:p-8 bg-gray-100 dark:bg-slate-900">
+      {/* Header Section */}
+      <header className="relative flex justify-between items-center mb-8">
+        <Link href="\home" className="top-section left-4">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -17,9 +20,13 @@ export default function ProfilPage() {
               d="M15.75 19.5 8.25 12 l7.5-7.5"
             />
           </svg>
-        </a>
+        </Link>
+      </header>
 
-        <div className="h-60 grid place-items-center">
+      {/* Body */}
+      <div className="w-full max-w-4xl mx-auto h-screen text-black dark:text-gray-200">
+        {/* Profile Pic/Bio Section */}
+        <div className="h-1/4 grid place-items-center">
           <div className="flex flex-col mt-12 p-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -36,25 +43,23 @@ export default function ProfilPage() {
               />
             </svg>
 
-            <p className="p-4 text-center text-xl">Name</p>
+            <p className="p-4 text-center text-2xl font-bold">Name</p>
           </div>
         </div>
 
-        <div className="relative h-20 font-bold">
-          <div className="progress-bar w-fill mx-4 my-2 bg-zinc-200 rounded-lg">
-            Progress Bar
+        {/* Progress Section */}
+        <div className="h-auto font-bold p-8 ">
+          <div className="progress-bar w-fill flex flex-row bg-zinc-200 rounded-lg">
+            <div className="ml-4">Progress: 100/420</div>
           </div>
-
-          <p className="ml-4">Progress:</p>
-
-          <p className="absolute bottom-4 right-4">100/420</p>
         </div>
 
-        <div className="relative flex flex-col">
-            <p className="my-4 text-2xl font-bold text-center">Achievements</p>
+        {/* Achievements Section */}
+        <div className="relative h-2/3 flex flex-col">
+          <p className="my-4 text-2xl font-bold text-center">Achievements</p>
 
-          <div className="absolute right-4 top-4 h-8 w-8 grid place-items-center">
-            <a href="https://">
+          <div className="absolute right-4 top-4 h-8 w-8 grid place-items-center ">
+            <Link href="https://">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -69,10 +74,17 @@ export default function ProfilPage() {
                   d="m8.25 4.5 7.5 7.5-7.5 7.5"
                 />
               </svg>
-            </a>
+            </Link>
           </div>
 
-          <div className="my-4 mx-4 w-fill grid grid-cols-3 grid-rows-3 gap-y-10 gap-x-4 place-items-center text-white">
+          <div className="m-4 p-4 w-fill grid grid-cols-4 grid-rows-4 gap-y-10 gap-x-4 place-items-center text-white">
+            <div className="badge">Badges</div>
+            <div className="badge">Badges</div>
+            <div className="badge">Badges</div>
+            <div className="badge">Badges</div>
+            <div className="badge">Badges</div>
+            <div className="badge">Badges</div>
+            <div className="badge">Badges</div>
             <div className="badge">Badges</div>
             <div className="badge">Badges</div>
             <div className="badge">Badges</div>
