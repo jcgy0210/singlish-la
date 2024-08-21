@@ -10,15 +10,15 @@ import {
 
 // export const userCount = sql`SELECT COUNT(*) FROM users`
 
-export async function fetchVocabsById(ids: string[]) {
+export async function fetchVocabsById(id: string) {
     try {
-      const data = await sql<VocabList[]>`
+      const data = await sql<VocabList>`
         SELECT
           vocabList.vocab,
           vocabList.meaning,
           vocabList.example
         FROM vocabList
-        WHERE vocabList.vocab_id IN (${sql.join(ids, sql`, `)});
+        WHERE vocabList.vocab_id = ${id};
         `; 
         const vocabs = data;
         return vocabs;
@@ -27,5 +27,4 @@ export async function fetchVocabsById(ids: string[]) {
       throw new Error('Failed to fetch vocabs.');
     }
   }
-  // to fetch: const selectedVocabs = await fetchVocabsById(['1.1', '1.2', '1.3']);
 
