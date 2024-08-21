@@ -43,14 +43,15 @@ const users = [
 const vocabList = [
   {
     id: '01',
-    vocab: '',
-    meaning: '',
-    example: '',
-    status: 'locked',
+    vocab: 'Walao eh',
+    meaning: 'Expressing surprise, frustration or disbelief. Think whoa, cmon or wow, but in Hokkien, a Chinese dialect.',
+    example: 'Walao eh! That set lunch is really a good bargain.',
   },
+
   {
 
-  }
+  },
+
 ];
 
 const achievements = [];

@@ -26,4 +26,14 @@ export async function fetchVocabsById(id: string) {
       throw new Error('Failed to fetch vocabs.');
     }
   }
+
+  // lesson completed -> add those vocabs to user profile's vocab dictionary
+  export async function vocabsAddToDict() {
+    try{
+
+    } catch (error) {
+        console.error('Database Error:', error);
+        throw new Error('Failed to fetch vocabs.');  
+    }
+  }
   
