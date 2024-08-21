@@ -40,4 +40,23 @@ const users = [
 
   ];  
 
-  export { users, admins };
+const vocabList = [
+  {
+    id: '01',
+    vocab: '',
+    meaning: '',
+    example: '',
+    status: 'locked',
+  },
+  {
+
+  }
+];
+
+const achievements = [];
+const courses = [];
+const lessons = [];
+const quizzes = [];
+const questions = [];
+
+export { users, admins };

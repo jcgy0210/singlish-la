@@ -50,7 +50,7 @@ export type Lesson = {
 
 export type Quiz = {
     quiz_id: string;          
-    course_id: string; // Foreign key to the course         
+    lesson_id: string; // Foreign key to the lesson         
     title: string;           
     questions: Question[];    
 };
