@@ -12,7 +12,6 @@ interface User {
 
 const Dashboard : React.FC = () => {
     const [users, setUsers] = useState<User[]>([]); 
-
     useEffect(() => {
         fetch("http://localhost:3000/api/users", {
           method: "GET",
@@ -30,7 +29,7 @@ const Dashboard : React.FC = () => {
           {users.length > 0 ? (
             users.map((user) => <User key={user.user_id} user={user} />)
           ) : (
-            <p>Loading users...</p>
+            <p>Number of users = </p>
           )}
         </div>
       );
