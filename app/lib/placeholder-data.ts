@@ -861,41 +861,41 @@ const questions = [
 const achievements = [
   {
     id: "01",
-    achievement: "",
-    description: "First ",
-    requirement: "",
+    achievement: "Lesson 1 Complete le!",
+    description: "Complete the first lesson ",
+    requirement: "Complete the first lesson",
     status: "locked",
   },
 
   {
     id: "02",
-    achievement: "",
-    description: "",
-    requirement: "",
+    achievement: "Steady la! First quiz done!",
+    description: "Complete the first quiz",
+    requirement: "Complete the first quiz",
     status: "locked",
   },
 
   {
     id: "03",
-    achievement: "",
-    description: "",
-    requirement: "",
+    achievement: "Swee first course!",
+    description: "Complete the first course",
+    requirement: "Complete the first course",
     status: "locked",
   },
 
   {
     id: "04",
-    achievement: "",
-    description: "",
-    requirement: "",
+    achievement: "Swee second course!",
+    description: "Complete the second course",
+    requirement: "Complete the second course",
     status: "locked",
   },
 
   {
     id: "05",
-    achievement: "",
-    description: "",
-    requirement: "",
+    achievement: "Swee third course!",
+    description: "Complete the third course",
+    requirement: "Complete the third course",
     status: "locked",
   },
 ];
