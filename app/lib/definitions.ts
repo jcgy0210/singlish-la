@@ -6,39 +6,36 @@ export type User = {
     name: string;
     email: string;
     password: string;
-}
+};
 
 export type Admin = {
     id: string;
     name: string;
     email: string;
     password: string;
-}
+};
 
 export type VocabList = {
-    id: string;
+    vocab_id: string;
     vocab: string;
     meaning: string;
     example: string;
-    status: 'locked' | 'unlocked';
-    // In TypeScript, this is called a string union type.
-    // It means that the "role" property can only be one of the two strings: 'User' or 'Admin'.
-}
+};
 
 export type Achievements = {
     id: string;
-    title: string;
-    descriptions: string;
+    achievement: string;
+    description: string;
+    requirement: string;
     status: 'locked' | 'unlocked';
-}
+};
 
 export type Courses = {
     course_id: string;
     title: string;
     description: string;
     lessons: Lesson[];
-    quizzes: Quiz[];
-}
+};
 
 export type Lesson = {
     lesson_id: string;
@@ -46,14 +43,15 @@ export type Lesson = {
     title: string;
     content: string;
     vocabList: VocabList[];
-}
+    quiz: Quiz[];
+};
 
 export type Quiz = {
     quiz_id: string;          
-    course_id: string; // Foreign key to the course         
+    lesson_id: string; // Foreign key to the lesson         
     title: string;           
     questions: Question[];    
-}
+};
 
 export type Question = {
     question_id: string;      // Unique identifier for each question
@@ -61,4 +59,4 @@ export type Question = {
     question_text: string;    // The text of the question
     options: string[];        // Array of possible answers
     correct_answer: string;   // The correct answer
-}
+};

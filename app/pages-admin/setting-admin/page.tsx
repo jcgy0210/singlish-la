@@ -1,11 +1,11 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'SinglishLA - User Profiles',
+  title: 'SinglishLA - Admin Setting',
 };
 
 export default async function Page() {
     return(
-        <p>This is Profile Page.</p>
+        <p>This is Admin Setting Page.</p>
     )
 }
