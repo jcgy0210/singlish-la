@@ -3,7 +3,7 @@ import Credentials from 'next-auth/providers/credentials';
 import { authConfig } from './auth.config';
 import { z } from 'zod';
 import { sql } from '@vercel/postgres';
-import type { User } from '@/app/lib/definitions';
+import type { Admin, User } from '@/app/lib/definitions';
 import bcrypt from 'bcrypt';
  
 async function getUser(email: string): Promise<User | undefined> {
@@ -13,6 +13,16 @@ async function getUser(email: string): Promise<User | undefined> {
   } catch (error) {
     console.error('Failed to fetch user:', error);
     throw new Error('Failed to fetch user.');
+  }
+}
+
+async function getAdmin(email: string): Promise<Admin | undefined> {
+  try {
+    const admin = await sql<Admin>`SELECT * FROM admins WHERE email=${email}`;
+    return admin.rows[0];
+  } catch (error) {
+    console.error('Failed to fetch admin:', error);
+    throw new Error('Failed to fetch admin.');
   }
 }
  
@@ -28,10 +38,12 @@ export const { auth, signIn, signOut } = NextAuth({
         if (parsedCredentials.success) {
           const { email, password } = parsedCredentials.data;
           const user = await getUser(email);
-          if (!user) return null;
-          const passwordsMatch = await bcrypt.compare(password, user.password);
- 
-          if (passwordsMatch) return user;
+          const admin = await getAdmin(email);
+          if (!user || !admin) return null;
+          const passwordsMatchUser = await bcrypt.compare(password, user.password);
+          const passwordsMatchAdmin = await bcrypt.compare(password, admin.password);
+          if (passwordsMatchUser) return user;
+          if (passwordsMatchAdmin) return admin;
         }
         
         console.log('Invalid credentials');
