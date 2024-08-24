@@ -63,7 +63,7 @@ async function seedCourses() {
   await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
   await client.sql`
     CREATE TABLE IF NOT EXISTS courses (
-      course_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+      course_id VARCHAR(10) PRIMARY KEY,
       title VARCHAR(255) NOT NULL,
       description TEXT NOT NULL,
       lessons JSONB
@@ -115,15 +115,13 @@ async function seedLessons() {
   return insertedLessons;
 }
 
-
 export async function GET() {
     try {
       await client.sql`BEGIN`;
       await seedUsers();
       await seedAdmins();
       // await seedCourses();
-      await seedLessons();
-
+      // await seedLessons();
       await client.sql`COMMIT`;
   
       return Response.json({ message: 'Database seeded successfully' });
