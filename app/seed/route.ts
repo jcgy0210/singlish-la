@@ -92,6 +92,7 @@ async function seedLessons() {
   `;
   const insertedLessons = await Promise.all(
     lessons.map(async (lesson) => {
+        // console.log('vocabList: ', JSON.stringify(lesson.vocabList));
       return client.sql`
         INSERT INTO lessons (lesson_id, course_id, title, vocabList, quiz)
         VALUES (
@@ -107,7 +108,8 @@ async function seedLessons() {
   );
 
   return insertedLessons;
-}
+} 
+//If the data appears correct in the database but shows incorrectly when retrieved, ensure you're using JSON.parse() when fetching and processing the vocabList and quiz data.
 
 async function seedVocabs(){
     await client.sql`
@@ -133,15 +135,98 @@ async function seedVocabs(){
     return insertedVocabs;
 }
 
+async function seedQuizzes() {
+    await client.sql`
+        CREATE TABLE IF NOT EXISTS quizzes (
+            quiz_id VARCHAR(10) PRIMARY KEY,
+            lesson_id VARCHAR(10) REFERENCES lessons(lesson_id) ON DELETE CASCADE,
+            title TEXT NOT NULL,
+            questions JSONB
+        );
+    `;
+    const insertedQuizzes = await Promise.all(
+        quizzes.map(async (quiz) => {
+            return client.sql`
+                INSERT INTO quizzes (quiz_id, lesson_id, title, questions)
+                VALUES (${quiz.quiz_id}, ${quiz.lesson_id}, ${quiz.title}, ${JSON.stringify(quiz.questions)})
+                ON CONFLICT (quiz_id) DO NOTHING;
+            `;
+        }),
+    );
+    
+    return insertedQuizzes;
+}
+
+async function seedQuestions(){
+    await client.sql`
+        CREATE TABLE IF NOT EXISTS questions (
+            question_id VARCHAR(10) PRIMARY KEY,
+            quiz_id VARCHAR(10) REFERENCES quizzes(quiz_id) ON DELETE CASCADE,
+            question_text TEXT NOT NULL,
+            options JSONB,
+            correct_answer TEXT NOT NULL
+        );
+    `;
+    const insertedQuestions = await Promise.all(
+        questions.map(async (question) => {
+            return client.sql`
+                INSERT INTO questions (question_id, quiz_id, question_text, options, correct_answer)
+                VALUES (
+                    ${question.question_id}, 
+                    ${question.quiz_id}, 
+                    ${question.question_text}, 
+                    ${JSON.stringify(question.options)}, 
+                    ${question.correct_answer}
+                )
+                ON CONFLICT (question_id) DO NOTHING;
+            `;
+        }),
+    );
+
+    return insertedQuestions;
+}
+
+async function seedAchievements(){
+    await client.sql`
+        CREATE TABLE IF NOT EXISTS achievements (
+            id VARCHAR(10) PRIMARY KEY,
+            achievement TEXT NOT NULL,
+            description TEXT NOT NULL,
+            requirement TEXT NOT NULL,
+            status VARCHAR(10) CHECK (status IN ('locked', 'unlocked')) NOT NULL 
+        );
+    `;
+    const insertedAchievements = await Promise.all(
+        achievements.map(async (achievement) => {
+            return client.sql`
+                INSERT INTO achievements (id, achievement, description, requirement, status)
+                VALUES (
+                    ${achievement.id}, 
+                    ${achievement.achievement}, 
+                    ${achievement.description}, 
+                    ${achievement.requirement}, 
+                    ${achievement.status}
+                )
+                ON CONFLICT (id) DO NOTHING;
+            `;
+        }),
+    );
+
+    return insertedAchievements;
+}
+
 export async function GET() {
     try {
-      await client.sql`BEGIN`;
+      await client.sql`BEGIN`
       await seedUsers();
       await seedAdmins();
       await seedCourses();
       await seedLessons();
       await seedVocabs();
-;      await client.sql`COMMIT`;
+      await seedQuizzes();
+      await seedQuestions();
+      await seedAchievements();
+;     await client.sql`COMMIT`;
   
       return Response.json({ message: 'Database seeded successfully' });
     } catch (error) {

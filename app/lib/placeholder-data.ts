@@ -849,7 +849,7 @@ const achievements = [
   {
     id: "01",
     achievement: "Lesson 1 Complete le!",
-    description: "Complete the first lesson ",
+    description: "Complete the first lesson",
     requirement: "Complete the first lesson",
     status: "locked",
   },
