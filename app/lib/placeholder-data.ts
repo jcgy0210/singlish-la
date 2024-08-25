@@ -49,7 +49,6 @@ const courses = [
     title: "Hello",
     description:
       "Teach users how to engage in casual converstations with Singaporeans of different cultural backgrounds.",
-    lessons: [{ lesson_id: "1.1" }, { lesson_id: "1.2" }, { lesson_id: "1.3" }],
   },
 
   {
@@ -57,7 +56,6 @@ const courses = [
     title: "Makan Makan",
     description:
       "Familiarise users with common Singlish expressions and vocabularies used when dining at a hawker centre.",
-    lessons: [{ lesson_id: "2.1" }, { lesson_id: "2.2" }, { lesson_id: "2.3" }],
   },
 
   {
@@ -65,7 +63,6 @@ const courses = [
     title: "Bojio!",
     description:
       "Equip users with the ability to ask for directions and recommendations for places to visit in Singapore.",
-    lessons: [{ lesson_id: "3.1" }, { lesson_id: "3.2" }, { lesson_id: "3.3" }],
   },
 ];
 
@@ -76,7 +73,6 @@ const lessons = [
     lesson_id: "1.1",
     course_id: "1",
     title: "Greetings and Introduction",
-    content: "",
     vocabList: [
       { vocab_id: "1.1" },
       { vocab_id: "1.2" },
@@ -91,7 +87,6 @@ const lessons = [
     lesson_id: "1.2",
     course_id: "1",
     title: "Discussing Daily Life",
-    content: "",
     vocabList: [
       { vocab_id: "1.6" },
       { vocab_id: "1.7" },
@@ -106,7 +101,6 @@ const lessons = [
     lesson_id: "1.3",
     course_id: "1",
     title: "Talking about the weather",
-    content: "",
     vocabList: [
       { vocab_id: "1.11" },
       { vocab_id: "1.12" },
@@ -121,7 +115,6 @@ const lessons = [
     lesson_id: "2.1",
     course_id: "2",
     title: "Ordering food",
-    content: "",
     vocabList: [
       { vocab_id: "2.1" },
       { vocab_id: "2.2" },
@@ -136,7 +129,6 @@ const lessons = [
     lesson_id: "2.2",
     course_id: "2",
     title: "Paying and Eating Etiquette",
-    content: "",
     vocabList: [
       { vocab_id: "2.6" },
       { vocab_id: "2.7" },
@@ -151,7 +143,6 @@ const lessons = [
     lesson_id: "2.3",
     course_id: "2",
     title: "Interacting with Hawker Centre Staff",
-    content: "",
     vocabList: [
       { vocab_id: "2.11" },
       { vocab_id: "2.12" },
@@ -166,7 +157,6 @@ const lessons = [
     lesson_id: "3.1",
     course_id: "3",
     title: "Asking for directions",
-    content: "",
     vocabList: [
       { vocab_id: "3.1" },
       { vocab_id: "3.2" },
@@ -181,7 +171,6 @@ const lessons = [
     lesson_id: "3.2",
     course_id: "3",
     title: "Recommending Places to Eat",
-    content: "",
     vocabList: [
       { vocab_id: "3.6" },
       { vocab_id: "3.7" },
@@ -196,7 +185,6 @@ const lessons = [
     lesson_id: "3.3",
     course_id: "3",
     title: "Talking about Popular Attractions",
-    content: "",
     vocabList: [
       { vocab_id: "3.11" },
       { vocab_id: "3.12" },

@@ -80,38 +80,34 @@ async function seedCourses() {
   return insertedCourses;
 }
 
-// async function seedLessons() {
-//   await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
-  
-//   // Create the lessons table with appropriate data types
-//   await client.sql`
-//     CREATE TABLE IF NOT EXISTS lessons (
-//       lesson_id VARCHAR(10) PRIMARY KEY, -- Assuming lesson_id is a string
-//       course_id VARCHAR(10) NOT NULL, -- Assuming course_id is a string
-//       title VARCHAR(255) NOT NULL,
-//       vocabList JSONB, -- Store vocabList as JSONB
-//       quiz JSONB -- Store quiz as JSONB
-//     );
-//   `;
+async function seedLessons() {  
+  await client.sql`
+    CREATE TABLE IF NOT EXISTS lessons (
+      lesson_id VARCHAR(10) PRIMARY KEY, 
+      course_id VARCHAR(10) REFERENCES courses(course_id) ON DELETE CASCADE, 
+      title TEXT NOT NULL,
+      vocabList JSONB, 
+      quiz JSONB 
+    );
+  `;
+  const insertedLessons = await Promise.all(
+    lessons.map(async (lesson) => {
+      return client.sql`
+        INSERT INTO lessons (lesson_id, course_id, title, vocabList, quiz)
+        VALUES (
+          ${lesson.lesson_id}, 
+          ${lesson.course_id}, 
+          ${lesson.title}, 
+          ${JSON.stringify(lesson.vocabList)}, 
+          ${JSON.stringify(lesson.quiz)}
+        )
+        ON CONFLICT (lesson_id) DO NOTHING;  
+      `;
+    }),
+  );
 
-//   const insertedLessons = await Promise.all(
-//     lessons.map(async (lesson) => {
-//       return client.sql`
-//         INSERT INTO lessons (lesson_id, course_id, title, vocabList, quiz)
-//         VALUES (
-//           ${lesson.lesson_id}, 
-//           ${lesson.course_id}, 
-//           ${lesson.title}, 
-//           ${JSON.stringify(lesson.vocabList)}, 
-//           ${JSON.stringify(lesson.quiz)}
-//         )
-//         ON CONFLICT (lesson_id) DO NOTHING;  // Use lesson_id for conflict resolution
-//       `;
-//     }),
-//   );
-
-//   return insertedLessons;
-// }
+  return insertedLessons;
+}
 
 
 export async function GET() {
@@ -119,8 +115,8 @@ export async function GET() {
       await client.sql`BEGIN`;
     //   await seedUsers();
     //   await seedAdmins();
-      await seedCourses();
-    //   await seedLessons();
+    //   await seedCourses();
+      await seedLessons();
 
       await client.sql`COMMIT`;
   
