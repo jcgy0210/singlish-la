@@ -109,16 +109,39 @@ async function seedLessons() {
   return insertedLessons;
 }
 
+async function seedVocabs(){
+    await client.sql`
+        CREATE TABLE IF NOT EXISTS vocabList (
+            vocab_id VARCHAR(10) PRIMARY KEY,
+            vocab TEXT NOT NULL,
+            meaning TEXT NOT NULL,
+            example TEXT NOT NULL
+        );
+    `;
+    const insertedVocabs = await Promise.all(
+        vocabList.map(async (vocab) => {
+            return client.sql`
+                INSERT INTO vocabList (vocab_id, vocab, meaning, example)
+                VALUES (
+                    ${vocab.vocab_id}, ${vocab.vocab}, ${vocab.meaning}, ${vocab.example}
+                )
+                ON CONFLICT (vocab_id) DO NOTHING;
+            `;
+        }),
+    );
+
+    return insertedVocabs;
+}
 
 export async function GET() {
     try {
       await client.sql`BEGIN`;
-    //   await seedUsers();
-    //   await seedAdmins();
-    //   await seedCourses();
+      await seedUsers();
+      await seedAdmins();
+      await seedCourses();
       await seedLessons();
-
-      await client.sql`COMMIT`;
+      await seedVocabs();
+;      await client.sql`COMMIT`;
   
       return Response.json({ message: 'Database seeded successfully' });
     } catch (error) {
