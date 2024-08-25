@@ -66,7 +66,6 @@ const courses = [
     description:
       "Equip users with the ability to ask for directions and recommendations for places to visit in Singapore.",
     lessons: [{ lesson_id: "3.1" }, { lesson_id: "3.2" }, { lesson_id: "3.3" }],
-    quizzes: [{ quiz_id: "3.1" }, { quiz_id: "3.2" }, { quiz_id: "3.3" }],
   },
 ];
 

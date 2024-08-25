@@ -27,7 +27,7 @@ async function seedUsers() {
           return client.sql`
             INSERT INTO users (id, name, email, password)
             VALUES (${user.id}, ${user.name}, ${user.email}, ${hashedPassword})
-            ON CONFLICT (id) DO NOTHING;
+            ON CONFLICT (email) DO NOTHING;
           `;
         }),
       );
@@ -60,21 +60,19 @@ async function seedAdmins() {
 }
 
 async function seedCourses() {
-  await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
   await client.sql`
     CREATE TABLE IF NOT EXISTS courses (
-      course_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+      course_id VARCHAR(10) PRIMARY KEY,
       title VARCHAR(255) NOT NULL,
-      description TEXT NOT NULL,
-      lessons JSONB
+      description TEXT NOT NULL
     );
   `;
   const insertedCourses = await Promise.all(
     courses.map(async (course) => {
       return client.sql`
-        INSERT INTO courses (course_id, title, description, lessons)
-        VALUES (${course.course_id}, ${course.title}, ${course.description}, ${JSON.stringify(course.lessons)})
-        ON CONFLICT (course_id) DO NOTHING;  // Use course_id instead of id
+        INSERT INTO courses (course_id, title, description)
+        VALUES (${course.course_id}, ${course.title}, ${course.description})
+        ON CONFLICT (course_id) DO NOTHING; 
       `;
     }),
   );
@@ -82,47 +80,47 @@ async function seedCourses() {
   return insertedCourses;
 }
 
-async function seedLessons() {
-  await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
+// async function seedLessons() {
+//   await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
   
-  // Create the lessons table with appropriate data types
-  await client.sql`
-    CREATE TABLE IF NOT EXISTS lessons (
-      lesson_id VARCHAR(10) PRIMARY KEY, -- Assuming lesson_id is a string
-      course_id VARCHAR(10) NOT NULL, -- Assuming course_id is a string
-      title VARCHAR(255) NOT NULL,
-      vocabList JSONB, -- Store vocabList as JSONB
-      quiz JSONB -- Store quiz as JSONB
-    );
-  `;
+//   // Create the lessons table with appropriate data types
+//   await client.sql`
+//     CREATE TABLE IF NOT EXISTS lessons (
+//       lesson_id VARCHAR(10) PRIMARY KEY, -- Assuming lesson_id is a string
+//       course_id VARCHAR(10) NOT NULL, -- Assuming course_id is a string
+//       title VARCHAR(255) NOT NULL,
+//       vocabList JSONB, -- Store vocabList as JSONB
+//       quiz JSONB -- Store quiz as JSONB
+//     );
+//   `;
 
-  const insertedLessons = await Promise.all(
-    lessons.map(async (lesson) => {
-      return client.sql`
-        INSERT INTO lessons (lesson_id, course_id, title, vocabList, quiz)
-        VALUES (
-          ${lesson.lesson_id}, 
-          ${lesson.course_id}, 
-          ${lesson.title}, 
-          ${JSON.stringify(lesson.vocabList)}, 
-          ${JSON.stringify(lesson.quiz)}
-        )
-        ON CONFLICT (lesson_id) DO NOTHING;  // Use lesson_id for conflict resolution
-      `;
-    }),
-  );
+//   const insertedLessons = await Promise.all(
+//     lessons.map(async (lesson) => {
+//       return client.sql`
+//         INSERT INTO lessons (lesson_id, course_id, title, vocabList, quiz)
+//         VALUES (
+//           ${lesson.lesson_id}, 
+//           ${lesson.course_id}, 
+//           ${lesson.title}, 
+//           ${JSON.stringify(lesson.vocabList)}, 
+//           ${JSON.stringify(lesson.quiz)}
+//         )
+//         ON CONFLICT (lesson_id) DO NOTHING;  // Use lesson_id for conflict resolution
+//       `;
+//     }),
+//   );
 
-  return insertedLessons;
-}
+//   return insertedLessons;
+// }
 
 
 export async function GET() {
     try {
       await client.sql`BEGIN`;
-      await seedUsers();
-      await seedAdmins();
-      // await seedCourses();
-      await seedLessons();
+    //   await seedUsers();
+    //   await seedAdmins();
+      await seedCourses();
+    //   await seedLessons();
 
       await client.sql`COMMIT`;
   
