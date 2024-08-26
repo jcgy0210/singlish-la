@@ -20,12 +20,17 @@ const DarkMode = () => {
   }, [darkMode]);
 
   return (
-    <button
-      className="bg-red-700 text-white text-lg rounded-md"
+    <div
+      className="relative w-16 h-9 flex items-center dark:bg-red bg-white border-2 border-red cursor-pointer rounded-full p-1"
       onClick={() => setDarkMode(!darkMode)}
     >
-      Dark
-    </button>
+      <div
+        className="absolute bg-red dark:bg-white 
+        w-6 h-6 rounded-full shadow-md 
+        transform transition-transform duration-300"
+        style={darkMode ? { right: "2px" } : { left: "2px" }}
+      ></div>
+    </div>
   );
 };
 

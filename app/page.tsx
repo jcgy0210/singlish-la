@@ -24,7 +24,7 @@ export default function AuthPage() {
   };
 
   return (
-    <main className="flex min-h-screen items-center justify-center p-4 md:p-8 bg-gray-100">
+    <main className="flex min-h-screen items-center justify-center p-4 md:p-8 bg-background-light">
       <div className="w-full max-w-md space-y-8">
         <div className="text-center">
           <Image
@@ -35,7 +35,7 @@ export default function AuthPage() {
             priority
             className="mx-auto"
           />
-          <h2 className="mt-6 text-2xl md:text-3xl font-extrabold text-[#900603]">
+          <h2 className="mt-6 text-2xl md:text-3xl font-extrabold text-red">
             {isSignIn ? "Login" : "Create your account"}
           </h2>
         </div>
@@ -92,7 +92,7 @@ export default function AuthPage() {
                 />
                 <label
                   htmlFor="remember-me"
-                  className="ml-2 block text-sm text-gray-900"
+                  className="ml-2 block text-sm text-background-dark"
                 >
                   Save login info, can ?
                 </label>

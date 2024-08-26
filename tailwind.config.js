@@ -1,6 +1,8 @@
-import type { Config } from "tailwindcss";
+/** @type {import('tailwindcss').Config} */
 
-const config: Config = {
+const colors = require("tailwindcss/colors");
+
+module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -8,6 +10,27 @@ const config: Config = {
   ],
   darkMode: "class",
   theme: {
+    colors: {
+      background: {
+        light: "#f9fafb",
+        dark: "#121212",
+      },
+
+      text: {
+        light: "#000000",
+        dark: "#e5e5e5",
+      },
+
+      white: "#FFFFFF",
+
+      black: "#000000",
+
+      red: "#900603",
+
+      gray: colors.gray,
+
+      transparent: "transparent",
+    },
     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -18,4 +41,3 @@ const config: Config = {
   },
   plugins: [],
 };
-export default config;

@@ -26,8 +26,26 @@ body {
     rgb(var(--background-start-rgb));
 }
 
-h1{
-  color: #900603 ;
+@layer base {
+  h1 {
+    @apply text-5xl font-bold;
+  }
+
+  h2 {
+    @apply text-4xl font-bold;
+  }
+
+  h3 {
+    @apply text-3xl font-bold;
+  }
+
+  h4 {
+    @apply text-2xl font-bold;
+  }
+
+  p {
+    @apply text-xl;
+  }
 }
 
 @layer utilities {
@@ -41,6 +59,8 @@ h1{
   top: 16px;
   display: grid;
   place-content: center;
+  width: 36px;
+  height: 36px;
 }
 
 .notes-section {
@@ -60,23 +80,23 @@ h1{
 .continue-button {
   background-color: #900603;
   border: 1px solid gray;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .continue-button:hover {
-  box-shadow: 4px 4px 10px rgba(0,0,0,0.6);
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.6);
 }
 
 .continue-button:active {
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.6) inset;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6) inset;
 }
 
 .progress-bar {
-  box-shadow: 1px 1px 5px rgba(50,50,50,0.3);
+  box-shadow: 1px 1px 5px rgba(50, 50, 50, 0.3);
 }
 
 .course-card {
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .profile-page {
@@ -87,24 +107,11 @@ h1{
   font-size: small;
   background-color: #900603;
   border: 1px solid gray;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .log-out-button:active {
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.3) inset;
-}
-
-.menu-button:hover{
-  background-color: #900603;
-  color: white;
-}
-
-#home-button {
-  color: #900603;
-}
-
-#home-button:hover {
-  color: white;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3) inset;
 }
 
 .section-title {

@@ -1,19 +1,22 @@
 "use client";
 
 import Link from "next/link";
-import DarkMode from "../../components/DarkMode";
-import ProfileInfo from "../../components/ProfileInfo";
+import DarkMode from "./components/DarkMode";
+import ProfileInfo from "./components/ProfileInfo";
 import { useState } from "react";
-import FAQSection from "../../components/FAQSection";
-import ContactUs from "../../components/ContactUs";
+import FAQSection from "./components/FAQSection";
+import ContactUs from "./components/ContactUs";
+import Menu from "../../components/Menu";
+import Header from "@/app/components/Header";
 
 export default function SettingsPage() {
   const [profileInfo, setProfileInfoVisibility] = useState(false);
   const [theFAQSection, setFAQVisibility] = useState(false);
   const [contactUs, setContactUsVisibility] = useState(false);
+  const [pageVisible, setPageVisibility] = useState(true);
 
   return (
-    <main className="min-h-screen p-4 md:p-8 bg-gray-100 dark:bg-slate-900">
+    <main className="min-h-screen p-4 md:p-8 bg-background-light dark:bg-background-dark">
       {profileInfo && (
         <ProfileInfo
           onClose={() => setProfileInfoVisibility(false)}
@@ -28,49 +31,31 @@ export default function SettingsPage() {
         <ContactUs onClose={() => setContactUsVisibility(false)}></ContactUs>
       )}
 
-      {!profileInfo && !theFAQSection && !contactUs && (
-        // Header Section
-        <header className="relative flex justify-between items-center mb-8">
-          <Link href="\home" className="top-section left-4">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={2.5}
-              stroke="#900603"
-              className="size-10"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M15.75 19.5 8.25 12 l7.5-7.5"
-              />
-            </svg>
-          </Link>
-        </header>
+      {!pageVisible && <Menu onClose={() => setPageVisibility(true)}></Menu>}
+
+      {pageVisible && !profileInfo && !theFAQSection && !contactUs && (
+        <Header
+          title="Settings"
+          onClick={() => setPageVisibility(false)}
+        ></Header>
       )}
 
-      {!profileInfo && !theFAQSection && !contactUs && (
+      {pageVisible && !profileInfo && !theFAQSection && !contactUs && (
         // Body
-        <div className="w-full max-w-4xl mx-auto h-screen text-black dark:text-gray-200">
-          {/* Title */}
-          <div className="w-fill h-24 flex justify-center items-center">
-            <h1 className="text-5xl font-bold">Settings</h1>
-          </div>
-
+        <div className="w-full max-w-4xl mx-auto flex flex-col gap-4 text-text-light dark:text-text-dark">
           {/* Display section */}
-          <div className="h-1/6 p-4 flex flex-col">
-            <h2 className="text-4xl font-bold">Display</h2>
+          <div className="flex flex-col p-4">
+            <h2>Display</h2>
 
-            <div className="flex flex-col h-5/6 p-4">
+            <div className="flex flex-col p-4 gap-4 ">
               {/* Dark Mode */}
-              <div className="h-1/2 w-fill flex flex-row items-center">
-                <div className="px-2">
+              <div className="flex flex-row ">
+                <div className="w-9">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
-                    strokeWidth={1.5}
+                    strokeWidth={2}
                     stroke="currentColor"
                     className="size-6"
                   >
@@ -82,94 +67,88 @@ export default function SettingsPage() {
                   </svg>
                 </div>
 
-                <h3 className="text-3xl">DARK MODE</h3>
+                <h3 className="flex-grow">DARK MODE</h3>
 
-                <div className="grow flex flex-col">
-                  <div className="place-self-end px-4">
-                    <DarkMode></DarkMode>
-                  </div>
+                <div className="place-self-end">
+                  <DarkMode></DarkMode>
                 </div>
               </div>
 
               {/* Font-Size */}
-              <div className="h-1/2 w-fill flex flex-row items-center">
-                <h3 className="p-2 text-3xl">Font Size</h3>
+              <div className="flex flex-row">
+                <h3 className="flex-grow">Font Size</h3>
 
-                <div className="grow flex flex-col">
-                  <div className="place-self-end flex flex-row p-4">
-                    <div className="px-4">Regular</div>
-                    <div className="px-4">Large</div>
-                  </div>
+                <div className="h-9 flex flex-row">
+                  <div className="px-4">Regular</div>
+
+                  <div className="px-4">Large</div>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Account Section */}
-          <div className="h-auto p-4 flex flex-col">
-            <h2 className="text-4xl font-bold">Account</h2>
+          <div className="flex flex-col p-4">
+            <h2>Account</h2>
 
-            <div className="p-4 flex flex-row">
-              <h3 className="p-2 text-3xl">Profile Information</h3>
+            <div className="flex flex-row p-4">
+              <h3 className="flex-grow">Profile Information</h3>
 
-              <div className="grow flex flex-col">
-                <button
-                  className="place-self-end"
-                  onClick={() => setProfileInfoVisibility(true)}
+              <button
+                className="w-9"
+                onClick={() => setProfileInfoVisibility(true)}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={2}
+                  stroke="#900603"
+                  className="size-9"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={2.5}
-                    stroke="#900603"
-                    className="size-9"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="m8.25 4.5 7.5 7.5-7.5 7.5"
-                    />
-                  </svg>
-                </button>
-              </div>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="m8.25 4.5 7.5 7.5-7.5 7.5"
+                  />
+                </svg>
+              </button>
             </div>
           </div>
 
           {/* Privacy&Security Section */}
-          <div className="h-auto p-4 flex flex-col">
-            <h2 className="text-4xl font-bold">Privacy & Security</h2>
+          <div className="flex flex-col p-4">
+            <h2>Privacy & Security</h2>
 
-            <div className="p-4 flex flex-row">
-              <h3 className="p-2 text-3xl">Notification</h3>
+            <div className="flex flex-col p-4 gap-4">
+              <div className="flex flex-row ">
+                <h3 className="flex-grow">Notification</h3>
 
-              <div className="grow flex flex-col">
-                <div className="place-self-end">Hi</div>
+                <div className="relative w-16 h-9 flex items-center dark:bg-red bg-white border-2 border-red cursor-pointer rounded-full p-1">
+                  <div className="absolute bg-red dark:bg-white w-6 h-6 rounded-full shadow-md transform transition-transform duration-300"></div>
+                </div>
               </div>
-            </div>
 
-            <Link href="\home" className="px-4">
-              <h3 className="p-2 text-3xl">Delete Account</h3>
-            </Link>
+              <Link href="\home" className="">
+                <h3>Delete Account</h3>
+              </Link>
+            </div>
           </div>
 
           {/* Support Section */}
-          <div className="h-auto p-4 flex flex-col">
-            <h2 className="text-4xl font-bold">Support</h2>
+          <div className="flex flex-col p-4">
+            <h2>Support</h2>
 
-            <div className="p-4 flex flex-row">
-              <h3 className="p-2 text-3xl">Help & FAQs</h3>
+            <div className="flex flex-col p-4 gap-4">
+              <div className="flex flex-row ">
+                <h3 className="flex-grow">Help & FAQs</h3>
 
-              <div className="grow flex flex-col">
-                <button
-                  className="place-self-end"
-                  onClick={() => setFAQVisibility(true)}
-                >
+                <button className="w-9" onClick={() => setFAQVisibility(true)}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
-                    strokeWidth={2.5}
+                    strokeWidth={2}
                     stroke="#900603"
                     className="size-9"
                   >
@@ -181,21 +160,19 @@ export default function SettingsPage() {
                   </svg>
                 </button>
               </div>
-            </div>
 
-            <div className="px-4 flex flex-row">
-              <h3 className="p-2 text-3xl">Contact Us</h3>
+              <div className="flex flex-row">
+                <h3 className="flex-grow">Contact Us</h3>
 
-              <div className="grow flex flex-col">
                 <button
-                  className="place-self-end"
+                  className="w-9"
                   onClick={() => setContactUsVisibility(true)}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
-                    strokeWidth={2.5}
+                    strokeWidth={2}
                     stroke="#900603"
                     className="size-9"
                   >
@@ -211,16 +188,14 @@ export default function SettingsPage() {
           </div>
 
           {/* Version Section */}
-          <div className="h-auto p-4 flex flex-row">
-            <h2 className="text-4xl font-bold">Version</h2>
+          <div className="flex flex-row p-4">
+            <h2 className="flex-grow">Version</h2>
 
-            <div className="grow flex flex-col">
-              <h2 className="place-self-end text-4xl">1.1.0</h2>
-            </div>
+            <h2>1.1.0</h2>
           </div>
 
           {/* About Section */}
-          <h2 className="h-auto p-4 flex flex-row text-4xl font-bold">About</h2>
+          <h2 className="flex flex-row p-4 text-4xl font-bold">About</h2>
         </div>
       )}
     </main>
