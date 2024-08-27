@@ -1,14 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation"; // Import useRouter
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 export default function AuthPage() {
   const [isSignIn, setIsSignIn] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loginAs, setLoginAs] = useState("user"); // State to track login as user or admin
+  const [loginAs, setLoginAs] = useState("user"); 
   const router = useRouter(); // Initialize useRouter
 
   const handleLogin = (e: any) => {
@@ -18,12 +18,17 @@ export default function AuthPage() {
     const dummyPassword = "123";
 
     if (
-      (loginAs === "user" && email === dummyUserEmail && password === dummyPassword) ||
-      (loginAs === "admin" && email === dummyAdminEmail && password === dummyPassword)
+      (loginAs === "user" && email === dummyUserEmail && password === dummyPassword) 
     ) {
       alert(`Login successful as ${loginAs}!`);
-      router.push("./home"); // Redirect to the home page
-    } else {
+      router.push("/home"); // Redirect to the home page
+    } 
+    else if ( 
+      (loginAs === "admin" && email === dummyAdminEmail && password === dummyPassword) ) {
+        alert(`Login successful as ${loginAs}!`);
+        router.push("??????"); // Redirect to the admin page
+    }
+      else {
       alert("Invalid email or password. Please try again.");
     }
   };
