@@ -1,14 +1,13 @@
-'use server'
+'use server';
 
+import { z } from 'zod';
 import { sql } from '@vercel/postgres';
-import { revalidatePath } from 'next/cache';
+import { revalidatePath } from 'next/cache'; 
 import { redirect } from 'next/navigation';
-import z from 'zod'
-import { achievements, vocabList } from './placeholder-data';
-
+import { signIn } from '@/auth';
+import { AuthError } from 'next-auth';
 
 //Courses Actions
-
 const CourseFormSchema = z.object({
     course_id: z.string(),
     title: z.string(),
@@ -581,3 +580,24 @@ export async function deleteAchievement(id: string) {
         };
       }
 }
+
+// Connect the auth logic with your login form:
+export async function authenticate(
+    prevState: string | undefined,
+    formData: FormData,
+  ) {
+    try {
+      await signIn('credentials', formData);
+    } catch (error) {
+      if (error instanceof AuthError) {
+        switch (error.type) {
+          case 'CredentialsSignin':
+            return 'Invalid credentials.';
+          default:
+            return 'Something went wrong.';
+        }
+      }
+      throw error;
+    }
+  }
+  
