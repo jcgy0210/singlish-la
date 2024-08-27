@@ -226,7 +226,7 @@ export async function GET() {
       await seedQuizzes();
       await seedQuestions();
       await seedAchievements();
-;     await client.sql`COMMIT`;
+      await client.sql`COMMIT`;
   
       return Response.json({ message: 'Database seeded successfully' });
     } catch (error) {

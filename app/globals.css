@@ -31,3 +31,61 @@ body {
     text-wrap: balance;
   }
 }
+
+.top-section {
+  position: absolute;
+  top: 16px;
+  display: grid;
+  place-content: center;
+}
+
+.notes-section {
+  background-color: #900603;
+}
+
+.badge {
+  display: grid;
+  height: 6rem;
+  width: 6rem;
+  background-color: #900603;
+  border-radius: 100%;
+  place-content: center;
+}
+
+.continue-button {
+  background-color: #900603;
+  border: 1px solid gray;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+}
+
+.continue-button:active {
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.3) inset;
+}
+
+.progress-bar {
+  box-shadow: 1px 1px 5px rgba(50,50,50,0.3);
+}
+
+.course-card {
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+}
+
+.profile-page {
+  height: 800px;
+}
+
+.home-button {
+  color: #900603;
+}
+
+.log-out-button {
+  font-size: small;
+  background-color: #900603;
+  border: 1px solid gray;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+}
+
+.log-out-button:active {
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.3) inset;
+}
+
