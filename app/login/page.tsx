@@ -21,12 +21,12 @@ export default function AuthPage() {
       (loginAs === "user" && email === dummyUserEmail && password === dummyPassword) 
     ) {
       alert(`Login successful as ${loginAs}!`);
-      router.push("/home"); // Redirect to the home page
+      router.push("/user/home"); 
     } 
     else if ( 
       (loginAs === "admin" && email === dummyAdminEmail && password === dummyPassword) ) {
         alert(`Login successful as ${loginAs}!`);
-        router.push("??????"); // Redirect to the admin page
+        router.push("/admin/dashboard"); 
     }
       else {
       alert("Invalid email or password. Please try again.");
