@@ -1,4 +1,4 @@
-export default function ProfilPage() {
+export default function ProfilePage() {
   return (
     <main className="grid place-items-center">
       <div className="profile-page relative flex flex-col w-96 my-20 bg-slate-100 text-black">
