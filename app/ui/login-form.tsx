@@ -3,14 +3,9 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-// import { useActionState } from "react";
 import { authenticate } from "@/app/lib/actions";
 
 export default function LoginForm() {
-  // const [errorMessage, formAction, isPending] = useActionState(
-  //   authenticate,
-  //   undefined
-  // );
 
   const [errorMessage, setErrorMessage] = useState("");
   const [isPending, setIsPending] = useState(false);
