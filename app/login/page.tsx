@@ -1,10 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import Image from "next/image";
-import { useActionState } from 'react';
-import { authenticate } from '@/app/lib/actions';
+// import { useActionState } from 'react';
 import LoginForm from "../ui/login-form";
 
 export default function AuthPage() {
