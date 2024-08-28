@@ -3,42 +3,45 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { useActionState } from 'react';
 import { authenticate } from "@/app/lib/actions";
 
 export default function LoginForm() {
-  // const [errorMessage, setErrorMessage] = useState<string | undefined>(undefined);
+  const [errorMessage, setErrorMessage] = useState<string | undefined>(undefined);
+  const [isPending, setIsPending] = useState(false);
   const [isSignIn, setIsSignIn] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginAs, setLoginAs] = useState("user");
   const router = useRouter();
 
-  const [errorMessage, formAction, isPending] = useActionState(authenticate, undefined);
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsPending(true);
+    setErrorMessage(undefined); // Clear previous errors
 
-  // const handleLogin = async (e: React.FormEvent) => {
-  //   e.preventDefault();
+    try {
+      const formData = new FormData();
+      formData.append("email", email);
+      formData.append("password", password);
 
-  //   try {
-  //     const formData = new FormData();
-  //     formData.append("email", email);
-  //     formData.append("password", password);
+      const result = await authenticate(undefined, formData); // Call the authenticate function
 
-  //     const result = await formAction(formData); // Pass the FormData as argument
-
-  //     if (result === null) {
-  //       errorMessage("Invalid credentials");
-  //     } else {
-  //       errorMessage(undefined); // Clear error message on success
-  //       router.push(loginAs === "user" ? "/user/home" : "/admin/dashboard");
-  //     }
-  //   } catch (error) {
-  //     errorMessage.set("Something went wrong. Please try again.");
-  //   }
-  // };
+      if (result) {
+        setErrorMessage(result); // Set the error message from authenticate
+      } else {
+        // Clear error message on success
+        setErrorMessage(undefined);
+        router.push(loginAs === "user" ? "/user/home" : "/admin/dashboard");
+      }
+    } catch (error) {
+      setErrorMessage('Something went wrong. Please try again.');
+    } finally {
+      setIsPending(false);
+    }
+  };
 
   return (
-    <form action={formAction} className="space-y-3">
+    <form onSubmit={handleLogin} className="space-y-3">
       <div className="w-full max-w-md space-y-8">
         <div className="text-center">
           <Image
@@ -153,6 +156,7 @@ export default function LoginForm() {
         <div>
           <button
             type="submit"
+            aria-disabled={isPending}
             className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white"
             style={{
               backgroundColor: "#900603",
@@ -182,9 +186,6 @@ export default function LoginForm() {
             </>
           )}
         </div>
-
     </form>
-
-    
   );
 }

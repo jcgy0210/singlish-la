@@ -34,18 +34,29 @@ export const { auth, signIn, signOut } = NextAuth({
         const parsedCredentials = z
           .object({ email: z.string().email(), password: z.string().min(6) })
           .safeParse(credentials);
- 
+
         if (parsedCredentials.success) {
           const { email, password } = parsedCredentials.data;
+
+          // Check for admin first
+          const admin = await getAdmin(email);
+          if (admin) {
+            const passwordsMatchAdmin = await bcrypt.compare(password, admin.password);
+            if (passwordsMatchAdmin) {
+              return admin; // Return admin object on successful login
+            }
+          }
+
+          // If not an admin, check for user
           const user = await getUser(email);
-          // const admin = await getAdmin(email);
-          if (!user) return null; //remove '|| !admin'
-          const passwordsMatchUser = await bcrypt.compare(password, user.password);
-          // const passwordsMatchAdmin = await bcrypt.compare(password, admin.password);
-          if (passwordsMatchUser) return user;
-          // if (passwordsMatchAdmin) return admin;
+          if (user) {
+            const passwordsMatchUser = await bcrypt.compare(password, user.password);
+            if (passwordsMatchUser) {
+              return user; // Return user object on successful login
+            }
+          }
         }
-        
+
         console.log('Invalid credentials');
         return null;
       },

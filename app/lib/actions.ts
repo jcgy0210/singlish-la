@@ -582,22 +582,53 @@ export async function deleteAchievement(id: string) {
 }
 
 // Connect the auth logic with your login form:
+// export async function authenticate(
+//     prevState: string | undefined,
+//     formData: FormData,
+//   ) {
+//     const email = formData.get('email') as string;
+//     const password = formData.get('password') as string;
+//     try {
+//       const result = await signIn('credentials', {
+//         redirect: false, // Do not redirect automatically
+//         email,
+//         password,
+//       });
+
+//       if(result?.error){
+//         return result.error; 
+//       }
+
+//     } catch (error) {
+//       if (error instanceof AuthError) {
+//         switch (error.type) {
+//           case 'CredentialsSignin':
+//             return 'Invalid credentials.';
+//           default:
+//             return 'Something went wrong.';
+//         }
+//       }
+//       throw error;
+//     }
+
+//     return undefined;
+//   }
+ 
 export async function authenticate(
-    prevState: string | undefined,
-    formData: FormData,
-  ) {
-    try {
-      await signIn('credentials', formData);
-    } catch (error) {
-      if (error instanceof AuthError) {
-        switch (error.type) {
-          case 'CredentialsSignin':
-            return 'Invalid credentials.';
-          default:
-            return 'Something went wrong.';
-        }
+  prevState: string | undefined,
+  formData: FormData,
+) {
+  try {
+    await signIn('credentials', formData);
+  } catch (error) {
+    if (error instanceof AuthError) {
+      switch (error.type) {
+        case 'CredentialsSignin':
+          return 'Invalid credentials.';
+        default:
+          return 'Something went wrong.';
       }
-      throw error;
     }
+    throw error;
   }
-  
+}
