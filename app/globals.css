@@ -46,26 +46,20 @@ body {
   p {
     @apply text-xl;
   }
+
+   .effect:hover {
+    @apply shadow-floating;
+  }
+
+  .effect:active {
+    @apply shadow-clicked;
+  }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
-}
-
-.top-section {
-  position: absolute;
-  top: 16px;
-  display: grid;
-  place-content: center;
-  width: 36px;
-  height: 36px;
-}
-
-.notes-section {
-  background-color: #900603;
-  border-radius: 20px;
 }
 
 .badge {
@@ -75,45 +69,4 @@ body {
   background-color: #900603;
   border-radius: 100%;
   place-content: center;
-}
-
-.continue-button {
-  background-color: #900603;
-  border: 1px solid gray;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-}
-
-.continue-button:hover {
-  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.6);
-}
-
-.continue-button:active {
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6) inset;
-}
-
-.progress-bar {
-  box-shadow: 1px 1px 5px rgba(50, 50, 50, 0.3);
-}
-
-.course-card {
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-}
-
-.profile-page {
-  height: 800px;
-}
-
-.log-out-button {
-  font-size: small;
-  background-color: #900603;
-  border: 1px solid gray;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-}
-
-.log-out-button:active {
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3) inset;
-}
-
-.section-title {
-  color: #900603;
 }

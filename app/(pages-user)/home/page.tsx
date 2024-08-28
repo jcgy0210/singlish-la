@@ -11,7 +11,7 @@ export default function HomePage() {
   const [pageVisible, setPageVisibility] = useState(true);
 
   return (
-    <main className="min-h-screen p-4 md:p-8 bg-background-light dark:bg-background-dark">
+    <main className="min-h-screen p-4 md:p-8 text-text-light dark:text-text-dark bg-background-light dark:bg-background-dark">
       {!pageVisible && <Menu onClose={() => setPageVisibility(true)}></Menu>}
 
       {pageVisible && (
@@ -20,7 +20,7 @@ export default function HomePage() {
 
       {pageVisible && (
         // Body
-        <div className="w-full max-w-4xl mx-auto flex flex-col gap-4 text-text-light dark:text-text-dark">
+        <div className="w-full max-w-4xl mx-auto flex flex-col gap-4">
           {/* Mascot */}
           <div className="grid place-items-center ">
             <Image src={Merli} alt="Mascot" width={150} />
@@ -28,7 +28,7 @@ export default function HomePage() {
 
           {/* Recent Course Section */}
           <div className="flex flex-col p-4 gap-4 border-2 border-red rounded-2xl">
-            <h2>Recent Courses</h2>
+            <h2>Recent Course</h2>
 
             <RecentCourse names="Basic Singlish"></RecentCourse>
           </div>

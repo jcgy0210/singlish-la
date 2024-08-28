@@ -12,12 +12,9 @@ const RecentCourse = ({ names }: Props) => {
       <div className="flex flew-row">
         <h3 className="text-red flex-grow">{names}</h3>
 
-        <Link
-          className="grid place-items-center p-1 text-white bg-red rounded-lg"
-          href="\courses"
-        >
-          Continue
-        </Link>
+        <button className="effect grid place-items-center p-1 text-white bg-red rounded-lg">
+          <Link href="\courses">Continue</Link>
+        </button>
       </div>
     </div>
   );

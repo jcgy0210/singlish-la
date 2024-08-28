@@ -32,7 +32,7 @@ export default function LessonsPage() {
   const [pageVisible, setPageVisibility] = useState(true);
 
   return (
-    <main className="min-h-screen p-4 md:p-8 bg-background-light dark:bg-background-dark">
+    <main className="min-h-screen p-4 md:p-8 text-text-light dark:text-text-dark bg-background-light dark:bg-background-dark">
       {!pageVisible && <Menu onClose={() => setPageVisibility(true)}></Menu>}
 
       {pageVisible && (
@@ -43,16 +43,14 @@ export default function LessonsPage() {
       )}
 
       {pageVisible && (
-        <div className="w-full max-w-4xl mx-auto flex flex-col text-text-light dark:text-text-dark">
-          <div className="mb-6">
-            <input
-              type="text"
-              placeholder="Search lessons..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red focus:border-transparent"
-            />
-          </div>
+        <div className="w-full max-w-4xl mx-auto flex flex-col gap-4">
+          <input
+            type="text"
+            placeholder="Search lessons..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="flex-grow p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red focus:border-transparent"
+          />
 
           <ul className="space-y-4">
             {filteredLessons.map((lesson) => (

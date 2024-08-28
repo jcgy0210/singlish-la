@@ -74,12 +74,13 @@ const Menu = ({ onClose }: Props) => {
           <h3>SETTINGS</h3>
         </Link>
 
-        <Link
-          href="\"
-          className="log-out-button my-4 rounded-xl p-2 text-white text-center flex place-self-end"
-        >
-          Log Out Ah?
-        </Link>
+        <button className="effect flex place-self-end rounded-xl mt-4 p-4 text-white text-center text-sm font-bold bg-red">
+          <Link
+            href="\"
+          >
+            Log Out Ah?
+          </Link>
+        </button>
       </div>
     </div>
   );

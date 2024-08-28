@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Menu from "@/app/components/Menu";
 import Header from "@/app/components/Header";
+import Link from "next/link";
 
 const courses = [
   {
@@ -35,7 +36,7 @@ export default function CoursesPage() {
   const [pageVisible, setPageVisibility] = useState(true);
 
   return (
-    <main className="min-h-screen p-4 md:p-8 bg-background-light dark:bg-background-dark">
+    <main className="min-h-screen p-4 md:p-8 text-text-light dark:text-text-dark bg-background-light dark:bg-background-dark">
       {!pageVisible && <Menu onClose={() => setPageVisibility(true)}></Menu>}
 
       {pageVisible && (
@@ -46,49 +47,35 @@ export default function CoursesPage() {
       )}
 
       {pageVisible && (
-        <div className="w-full max-w-4xl mx-auto flex flex-col text-text-light dark:text-text-dark">
-          <div className="mb-6">
-            <input
-              type="text"
-              placeholder="Search courses..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red focus:border-transparent"
-            />
-          </div>
+        <div className="w-full max-w-4xl mx-auto flex flex-col gap-4">
+          <input
+            type="text"
+            placeholder="Search courses..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="flex-grow p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red focus:border-transparent"
+          />
 
-          <ul className="space-y-4">
+          <ul className="flex flex-col gap-4">
             {filteredCourses.map((course) => (
-              <li key={course.id} className="bg-white p-4 rounded-lg shadow-md">
-                <h2 className="text-xl font-semibold text-gray-900">
-                  {course.title}
-                </h2>
-                <p className="mt-2 text-gray-600">{course.description}</p>
+              <li
+                key={course.id}
+                className="flex flex-col gap-2 bg-background-light dark:bg-red dark:text-white p-4 rounded-lg shadow-md"
+              >
+                {/* Course title */}
+                <h2 className="text-red">{course.title}</h2>
 
-                {/* <Link href="/lessons/Lessons">
-                                <button
-                                    className="mt-4 w-full py-2 px-4 bg-red text-white font-medium rounded-md hover:bg-[#700404] focus:outline-none focus:ring-2 focus:ring-red focus:ring-offset-2"
-                                    onClick={() => alert(`Enrolled in ${course.title}`)}
-                                >
-                                    Let's Learn Leh
-                                </button>
-                            </Link> */}
+                {/* Description */}
+                <p>{course.description}</p>
 
-                {/* <button
-                                    className="mt-4 w-full py-2 px-4 bg-red text-white font-medium rounded-md hover:bg-[#700404] focus:outline-none focus:ring-2 focus:ring-red focus:ring-offset-2"
-                                    onClick={() => alert(`Enrolled in ${course.title}`)}
-                                >
-                                    Let's Learn Leh
-                                </button> */}
-
-                <a href="\lessons">
+                <Link href="\lessons">
                   <button
-                    className="mt-4 w-full py-2 px-4 bg-red text-white font-medium rounded-md hover:bg-[#700404] focus:outline-none focus:ring-2 focus:ring-red focus:ring-offset-2"
+                    className="effect mt-4 w-full py-2 px-4 bg-red text-white font-medium rounded-md"
                     onClick={() => alert(`Enrolled in ${course.title}`)}
                   >
                     Let's Learn Leh
                   </button>
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

@@ -53,7 +53,7 @@ export default function Vocab() {
 
           {/* Body */}
           <div className="w-full max-w-4xl mx-auto p-4">
-            <ul className="p-4 bg-red text-red rounded-xl flex flex-col gap-4">
+            <ul className="p-4 border-8 border-red text-red rounded-2xl flex flex-col gap-4">
               {data.map((data) => (
                 <VocabCard
                   phrase={data.phrase}
