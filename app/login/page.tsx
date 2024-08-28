@@ -8,33 +8,33 @@ import { authenticate } from '@/app/lib/actions';
 import LoginForm from "../ui/login-form";
 
 export default function AuthPage() {
-  const [isSignIn, setIsSignIn] = useState(true);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [loginAs, setLoginAs] = useState("user");
-  const router = useRouter(); // Initialize useRouter
+  // const [isSignIn, setIsSignIn] = useState(true);
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [loginAs, setLoginAs] = useState("user");
+  // const router = useRouter(); // Initialize useRouter
 
-  const handleLogin = (e: any) => {
-    e.preventDefault();
-    const dummyUserEmail = "dummyuser@example.com";
-    const dummyAdminEmail = "dummyadmin@example.com";
-    const dummyPassword = "123";
+  // const handleLogin = (e: any) => {
+  //   e.preventDefault();
+  //   const dummyUserEmail = "dummyuser@example.com";
+  //   const dummyAdminEmail = "dummyadmin@example.com";
+  //   const dummyPassword = "123";
 
-    if (
-      (loginAs === "user" && email === dummyUserEmail && password === dummyPassword) 
-    ) {
-      alert(`Login successful as ${loginAs}!`);
-      router.push("/user/home"); 
-    } 
-    else if ( 
-      (loginAs === "admin" && email === dummyAdminEmail && password === dummyPassword) ) {
-        alert(`Login successful as ${loginAs}!`);
-        router.push("/admin/dashboard"); 
-    }
-      else {
-      alert("Invalid email or password. Please try again.");
-    }
-  };
+  //   if (
+  //     (loginAs === "user" && email === dummyUserEmail && password === dummyPassword) 
+  //   ) {
+  //     alert(`Login successful as ${loginAs}!`);
+  //     router.push("/user/home"); 
+  //   } 
+  //   else if ( 
+  //     (loginAs === "admin" && email === dummyAdminEmail && password === dummyPassword) ) {
+  //       alert(`Login successful as ${loginAs}!`);
+  //       router.push("/admin/dashboard"); 
+  //   }
+  //     else {
+  //     alert("Invalid email or password. Please try again.");
+  //   }
+  // };
 
   
   return (
