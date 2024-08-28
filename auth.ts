@@ -38,12 +38,12 @@ export const { auth, signIn, signOut } = NextAuth({
         if (parsedCredentials.success) {
           const { email, password } = parsedCredentials.data;
           const user = await getUser(email);
-          const admin = await getAdmin(email);
-          if (!user || !admin) return null;
+          // const admin = await getAdmin(email);
+          if (!user) return null; //remove '|| !admin'
           const passwordsMatchUser = await bcrypt.compare(password, user.password);
-          const passwordsMatchAdmin = await bcrypt.compare(password, admin.password);
+          // const passwordsMatchAdmin = await bcrypt.compare(password, admin.password);
           if (passwordsMatchUser) return user;
-          if (passwordsMatchAdmin) return admin;
+          // if (passwordsMatchAdmin) return admin;
         }
         
         console.log('Invalid credentials');
