@@ -3,66 +3,42 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { useActionState } from 'react';
 import { authenticate } from "@/app/lib/actions";
 
 export default function LoginForm() {
-
-  const [errorMessage, setErrorMessage] = useState("");
-  const [isPending, setIsPending] = useState(false);
+  // const [errorMessage, setErrorMessage] = useState<string | undefined>(undefined);
   const [isSignIn, setIsSignIn] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginAs, setLoginAs] = useState("user");
   const router = useRouter();
 
-  const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsPending(true);
+  const [errorMessage, formAction, isPending] = useActionState(authenticate, undefined);
 
-    try {
-      const formData = new FormData();
-      formData.append("email", email);
-      formData.append("password", password);
+  // const handleLogin = async (e: React.FormEvent) => {
+  //   e.preventDefault();
 
-      const result = await authenticate(undefined, formData);
+  //   try {
+  //     const formData = new FormData();
+  //     formData.append("email", email);
+  //     formData.append("password", password);
 
-      if (result === null) {
-        setErrorMessage("Invalid credentials");
-      } else {
-        setErrorMessage("");
-        router.push(loginAs === "user" ? "/user/home" : "/admin/dashboard");
-      }
-    } catch (error) {
-      setErrorMessage("Something went wrong. Please try again.");
-    } finally {
-      setIsPending(false);
-    }
-  };
-  //   const dummyUserEmail = "dummyuser@example.com";
-  //   const dummyAdminEmail = "dummyadmin@example.com";
-  //   const dummyPassword = "123";
+  //     const result = await formAction(formData); // Pass the FormData as argument
 
-  //   if (
-  //     loginAs === "user" &&
-  //     email === dummyUserEmail &&
-  //     password === dummyPassword
-  //   ) {
-  //     alert(`Login successful as ${loginAs}!`);
-  //     router.push("/user/home");
-  //   } else if (
-  //     loginAs === "admin" &&
-  //     email === dummyAdminEmail &&
-  //     password === dummyPassword
-  //   ) {
-  //     alert(`Login successful as ${loginAs}!`);
-  //     router.push("/admin/dashboard");
-  //   } else {
-  //     alert("Invalid email or password. Please try again.");
+  //     if (result === null) {
+  //       errorMessage("Invalid credentials");
+  //     } else {
+  //       errorMessage(undefined); // Clear error message on success
+  //       router.push(loginAs === "user" ? "/user/home" : "/admin/dashboard");
+  //     }
+  //   } catch (error) {
+  //     errorMessage.set("Something went wrong. Please try again.");
   //   }
   // };
 
   return (
-    <form onSubmit={handleLogin} className="space-y-3">
+    <form action={formAction} className="space-y-3">
       <div className="w-full max-w-md space-y-8">
         <div className="text-center">
           <Image
@@ -194,6 +170,21 @@ export default function LoginForm() {
           </button>
         </div>
       </div>
+      <div 
+          className="flex h-8 items-end space-x-1"
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          {/* Add form errors here */}
+          {errorMessage && (
+            <>
+              <p className="text-sm text-red-500">{errorMessage}</p>
+            </>
+          )}
+        </div>
+
     </form>
+
+    
   );
 }
