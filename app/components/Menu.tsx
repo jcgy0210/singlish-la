@@ -1,3 +1,7 @@
+import { signOutAction } from "@/app/lib/actions";
+
+
+
 interface Props {
   onClose: () => void;
 }
@@ -60,13 +64,18 @@ const Menu = ({ onClose }: Props) => {
           <p>SETTINGS</p>
         </a>
 
-        <a
-          href="\log-in-user"
-          className="log-out-button my-4 rounded-xl p-2 text-white text-center"
+        <form
+          action={async () => {
+            await signOutAction(); // Call the server-side sign-out function
+          }}
         >
-          Log Out Ah?
-        </a>
-      </div>
+          <button
+            type="submit"
+            className="log-out-button my-4 rounded-xl p-2 text-white text-center"
+          >
+            Log Out ah?
+          </button>
+        </form>      </div>
     </div>
   );
 };

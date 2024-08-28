@@ -5,6 +5,7 @@ import { sql } from '@vercel/postgres';
 import { revalidatePath } from 'next/cache'; 
 import { redirect } from 'next/navigation';
 import { signIn } from '@/auth';
+import { signOut } from '@/auth';
 import { AuthError } from 'next-auth';
 
 //Courses Actions
@@ -581,39 +582,7 @@ export async function deleteAchievement(id: string) {
       }
 }
 
-// Connect the auth logic with your login form:
-// export async function authenticate(
-//     prevState: string | undefined,
-//     formData: FormData,
-//   ) {
-//     const email = formData.get('email') as string;
-//     const password = formData.get('password') as string;
-//     try {
-//       const result = await signIn('credentials', {
-//         redirect: false, // Do not redirect automatically
-//         email,
-//         password,
-//       });
-
-//       if(result?.error){
-//         return result.error; 
-//       }
-
-//     } catch (error) {
-//       if (error instanceof AuthError) {
-//         switch (error.type) {
-//           case 'CredentialsSignin':
-//             return 'Invalid credentials.';
-//           default:
-//             return 'Something went wrong.';
-//         }
-//       }
-//       throw error;
-//     }
-
-//     return undefined;
-//   }
- 
+// Connect the auth logic with your login form: 
 export async function authenticate(
   prevState: string | undefined,
   formData: FormData,
@@ -631,4 +600,9 @@ export async function authenticate(
     }
     throw error;
   }
+}
+
+export async function signOutAction() {
+  'use server'; 
+  await signOut(); 
 }
