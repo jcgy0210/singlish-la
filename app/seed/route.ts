@@ -63,17 +63,18 @@ async function seedCourses() {
   await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
   await client.sql`
     CREATE TABLE IF NOT EXISTS courses (
-      course_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+      course_id VARCHAR(10) PRIMARY KEY,
       title VARCHAR(255) NOT NULL,
       description TEXT NOT NULL,
       lessons JSONB
     );
   `;
+
   const insertedCourses = await Promise.all(
     courses.map(async (course) => {
       return client.sql`
         INSERT INTO courses (course_id, title, description, lessons)
-        VALUES (${course.course_id}, ${course.title}, ${course.description}, ${JSON.stringify(course.lessons)})
+        VALUES (${course.course_id}, ${course.title}, ${course.description}})
         ON CONFLICT (course_id) DO NOTHING;  // Use course_id instead of id
       `;
     }),
@@ -104,13 +105,24 @@ async function seedLessons() {
           ${lesson.lesson_id}, 
           ${lesson.course_id}, 
           ${lesson.title}, 
-          ${JSON.stringify(lesson.vocabList)}, 
-          ${JSON.stringify(lesson.quiz)}
         )
         ON CONFLICT (lesson_id) DO NOTHING;  // Use lesson_id for conflict resolution
       `;
     }),
   );
+
+  courses.forEach((course) => {
+    const query = `
+      INSERT INTO courses (course_id, title, description, lessons)
+      VALUES (
+        '${course.course_id}', 
+        '${course.title}', 
+        '${course.description}', 
+      )
+      ON CONFLICT (course_id) DO NOTHING;
+    `;
+    console.log("Generated SQL query:", query);
+  });
 
   return insertedLessons;
 }
@@ -119,10 +131,10 @@ async function seedLessons() {
 export async function GET() {
     try {
       await client.sql`BEGIN`;
-      await seedUsers();
-      await seedAdmins();
-      // await seedCourses();
-      await seedLessons();
+      //await seedUsers();
+      //await seedAdmins();
+       await seedCourses();
+      //await seedLessons();
 
       await client.sql`COMMIT`;
   

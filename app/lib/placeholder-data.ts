@@ -49,7 +49,7 @@ const courses = [
     title: "Hello",
     description:
       "Teach users how to engage in casual converstations with Singaporeans of different cultural backgrounds.",
-    lessons: [{ lesson_id: "1.1" }, { lesson_id: "1.2" }, { lesson_id: "1.3" }],
+    
   },
 
   {
@@ -57,7 +57,7 @@ const courses = [
     title: "Makan Makan",
     description:
       "Familiarise users with common Singlish expressions and vocabularies used when dining at a hawker centre.",
-    lessons: [{ lesson_id: "2.1" }, { lesson_id: "2.2" }, { lesson_id: "2.3" }],
+    
   },
 
   {
@@ -65,8 +65,7 @@ const courses = [
     title: "Bojio!",
     description:
       "Equip users with the ability to ask for directions and recommendations for places to visit in Singapore.",
-    lessons: [{ lesson_id: "3.1" }, { lesson_id: "3.2" }, { lesson_id: "3.3" }],
-    quizzes: [{ quiz_id: "3.1" }, { quiz_id: "3.2" }, { quiz_id: "3.3" }],
+    
   },
 ];
 
@@ -78,14 +77,7 @@ const lessons = [
     course_id: "1",
     title: "Greetings and Introduction",
     content: "",
-    vocabList: [
-      { vocab_id: "1.1" },
-      { vocab_id: "1.2" },
-      { vocab_id: "1.3" },
-      { vocab_id: "1.4" },
-      { vocab_id: "1.5" },
-    ],
-    quiz: [{ quiz_id: "1.1" }],
+
   },
 
   {
@@ -93,14 +85,7 @@ const lessons = [
     course_id: "1",
     title: "Discussing Daily Life",
     content: "",
-    vocabList: [
-      { vocab_id: "1.6" },
-      { vocab_id: "1.7" },
-      { vocab_id: "1.8" },
-      { vocab_id: "1.9" },
-      { vocab_id: "1.10" },
-    ],
-    quiz: [{ quiz_id: "1.2" }],
+   
   },
 
   {
@@ -108,14 +93,7 @@ const lessons = [
     course_id: "1",
     title: "Talking about the weather",
     content: "",
-    vocabList: [
-      { vocab_id: "1.11" },
-      { vocab_id: "1.12" },
-      { vocab_id: "1.13" },
-      { vocab_id: "1.14" },
-      { vocab_id: "1.15" },
-    ],
-    quiz: [{ quiz_id: "1.3" }],
+    
   },
 
   {
@@ -123,14 +101,7 @@ const lessons = [
     course_id: "2",
     title: "Ordering food",
     content: "",
-    vocabList: [
-      { vocab_id: "2.1" },
-      { vocab_id: "2.2" },
-      { vocab_id: "2.3" },
-      { vocab_id: "2.4" },
-      { vocab_id: "2.5" },
-    ],
-    quiz: [{ quiz_id: "2.1" }],
+   
   },
 
   {
@@ -138,14 +109,7 @@ const lessons = [
     course_id: "2",
     title: "Paying and Eating Etiquette",
     content: "",
-    vocabList: [
-      { vocab_id: "2.6" },
-      { vocab_id: "2.7" },
-      { vocab_id: "2.8" },
-      { vocab_id: "2.9" },
-      { vocab_id: "2.10" },
-    ],
-    quiz: [{ quiz_id: "2.2" }],
+  
   },
 
   {
@@ -153,14 +117,7 @@ const lessons = [
     course_id: "2",
     title: "Interacting with Hawker Centre Staff",
     content: "",
-    vocabList: [
-      { vocab_id: "2.11" },
-      { vocab_id: "2.12" },
-      { vocab_id: "2.13" },
-      { vocab_id: "2.14" },
-      { vocab_id: "2.15" },
-    ],
-    quiz: [{ quiz_id: "2.3" }],
+    
   },
 
   {
@@ -168,14 +125,7 @@ const lessons = [
     course_id: "3",
     title: "Asking for directions",
     content: "",
-    vocabList: [
-      { vocab_id: "3.1" },
-      { vocab_id: "3.2" },
-      { vocab_id: "3.3" },
-      { vocab_id: "3.4" },
-      { vocab_id: "3.5" },
-    ],
-    quiz: [{ quiz_id: "3.1" }],
+    
   },
 
   {
@@ -183,14 +133,7 @@ const lessons = [
     course_id: "3",
     title: "Recommending Places to Eat",
     content: "",
-    vocabList: [
-      { vocab_id: "3.6" },
-      { vocab_id: "3.7" },
-      { vocab_id: "3.8" },
-      { vocab_id: "3.9" },
-      { vocab_id: "3.10" },
-    ],
-    quiz: [{ quiz_id: "3.2" }],
+    
   },
 
   {
@@ -198,14 +141,7 @@ const lessons = [
     course_id: "3",
     title: "Talking about Popular Attractions",
     content: "",
-    vocabList: [
-      { vocab_id: "3.11" },
-      { vocab_id: "3.12" },
-      { vocab_id: "3.13" },
-      { vocab_id: "3.14" },
-      { vocab_id: "3.15" },
-    ],
-    quiz: [{ quiz_id: "3.3" }],
+   
   },
 ];
 
@@ -535,99 +471,63 @@ const quizzes = [
     quiz_id: "1.1",
     lesson_id: "1.1",
     title: "Quiz 1.1",
-    questions: [
-      { question_id: "1.1" },
-      { question_id: "1.2" },
-      { question_id: "1.3" },
-    ],
+    
   },
 
   {
     quiz_id: "1.2",
     lesson_id: "1.2",
     title: "Quiz 1.2",
-    questions: [
-      { question_id: "1.4" },
-      { question_id: "1.5" },
-      { question_id: "1.6" },
-    ],
+    
   },
 
   {
     quiz_id: "1.3",
     lesson_id: "1.3",
     title: "Quiz 1.3",
-    questions: [
-      { question_id: "1.7" },
-      { question_id: "1.8" },
-      { question_id: "1.9" },
-    ],
+    
   },
 
   {
     quiz_id: "2.1",
     lesson_id: "2.1",
     title: "Quiz 2.1",
-    questions: [
-      { question_id: "2.1" },
-      { question_id: "2.2" },
-      { question_id: "2.3" },
-    ],
+    
   },
 
   {
     quiz_id: "2.2",
     lesson_id: "2.2",
     title: "Quiz 2.2",
-    questions: [
-      { question_id: "2.4" },
-      { question_id: "2.5" },
-      { question_id: "2.6" },
-    ],
+    
   },
 
   {
     quiz_id: "2.3",
     lesson_id: "2.3",
     title: "Quiz 2.3",
-    questions: [
-      { question_id: "2.7" },
-      { question_id: "2.8" },
-      { question_id: "2.9" },
-    ],
+    
   },
 
   {
     quiz_id: "3.1",
     lesson_id: "3.1",
     title: "Quiz 3.1",
-    questions: [
-      { question_id: "3.1" },
-      { question_id: "3.2" },
-      { question_id: "3.3" },
-    ],
+    
   },
 
   {
     quiz_id: "3.2",
     lesson_id: "3.2",
     title: "Quiz 3.2",
-    questions: [
-      { question_id: "3.4" },
-      { question_id: "3.5" },
-      { question_id: "3.6" },
-    ],
+    
   },
 
   {
     quiz_id: "3.3",
     lesson_id: "3.3",
     title: "Quiz 3.3",
-    questions: [
-      { question_id: "3.7" },
-      { question_id: "3.8" },
-      { question_id: "3.9" },
-    ],
+    
   },
 ];
 
