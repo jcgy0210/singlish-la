@@ -85,19 +85,17 @@ async function seedLessons() {
     CREATE TABLE IF NOT EXISTS lessons (
       lesson_id VARCHAR(10) PRIMARY KEY, 
       course_id VARCHAR(10) REFERENCES courses(course_id) ON DELETE CASCADE, 
-      title TEXT NOT NULL,
-      vocabList JSONB, 
-      quiz JSONB 
+      title TEXT NOT NULL
     );
   `;
   const insertedLessons = await Promise.all(
     lessons.map(async (lesson) => {
       return client.sql`
-        INSERT INTO lessons (lesson_id, course_id, title, vocabList, quiz)
+        INSERT INTO lessons (lesson_id, course_id, title)
         VALUES (
           ${lesson.lesson_id}, 
           ${lesson.course_id}, 
-          ${lesson.title}, 
+          ${lesson.title}
         )
         ON CONFLICT (lesson_id) DO NOTHING;  
       `;
@@ -106,7 +104,6 @@ async function seedLessons() {
 
   return insertedLessons;
 } 
-//If the data appears correct in the database but shows incorrectly when retrieved, ensure you're using JSON.parse() when fetching and processing the vocabList and quiz data.
 
 async function seedVocabs(){
     await client.sql`
@@ -214,16 +211,16 @@ async function seedAchievements(){
 
 export async function GET() {
     try {
-      await client.sql`BEGIN`
+      await client.sql`BEGIN`;
       await seedUsers();
       await seedAdmins();
       await seedCourses();
       await seedLessons();
-      await seedVocabs();
+      // await seedVocabs();
       await seedQuizzes();
       await seedQuestions();
       await seedAchievements();
-;     await client.sql`COMMIT`;
+      await client.sql`COMMIT`;
   
       return Response.json({ message: 'Database seeded successfully' });
     } catch (error) {

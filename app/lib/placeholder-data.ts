@@ -417,7 +417,7 @@ const vocabList = [
     lesson_id: "3.2",
     vocab: "Sedap",
     meaning: "Delicious",
-    example:"The laksa from this place damn sedap!",
+    example: "The laksa from this place damn sedap!",
   },
   {
     vocab_id: "3.7",
@@ -561,7 +561,12 @@ const questions = [
     question_id: "1.2",
     quiz_id: "1.1",
     question_text: "How would you order black coffee?",
-    options: ["One Kopi-T please", "One Kopi-C please", "One Kopi-P please", "One Kopi-O please"],
+    options: [
+      "One Kopi-T please",
+      "One Kopi-C please",
+      "One Kopi-P please",
+      "One Kopi-O please",
+    ],
     correct_answer: "One Kopi-O please",
   },
 
@@ -724,8 +729,14 @@ const questions = [
   {
     question_id: "3.4",
     quiz_id: "3.2",
-    question_text: "If you're late for a movie and you tell your friend, 'Let’s chiong to the cinema!', what are you asking them to do?",
-    options: ["Drive to the cinema", "Takeover the cinema", "Eat in the cinema", "Rush to the cinema"],
+    question_text:
+      "If you're late for a movie and you tell your friend, 'Let’s chiong to the cinema!', what are you asking them to do?",
+    options: [
+      "Drive to the cinema",
+      "Takeover the cinema",
+      "Eat in the cinema",
+      "Rush to the cinema",
+    ],
     correct_answer: "Rush to the cinema",
   },
 
@@ -734,7 +745,12 @@ const questions = [
     quiz_id: "3.2",
     question_text:
       "If someone says, 'That presentation was solid!', what do they mean about the presentation?",
-    options: ["It was hesitant", "It was excellent", "It was awkward", "It was attractive"],
+    options: [
+      "It was hesitant",
+      "It was excellent",
+      "It was awkward",
+      "It was attractive",
+    ],
     correct_answer: "It was excellent",
   },
 
@@ -742,31 +758,54 @@ const questions = [
     question_id: "3.6",
     quiz_id: "3.2",
     question_text: "'Lisa kena fine $100', what does it mean?",
-    options: ["Lisa gave a $100 fine", "Lisa won a $100 fine", "Lisa paid a $100 fine", "Lisa received a $100 fine"],
+    options: [
+      "Lisa gave a $100 fine",
+      "Lisa won a $100 fine",
+      "Lisa paid a $100 fine",
+      "Lisa received a $100 fine",
+    ],
     correct_answer: "Lisa received a $100 fine",
   },
 
   {
     question_id: "3.7",
     quiz_id: "3.3",
-    question_text: "If someone says, 'I felt gabra before my presentation.' what does that imply about their feelings?",
-    options: ["They were calm and relaxed.", "They were excited and happy.", "They were panicky or flustered.", "They were confident and prepared."],
+    question_text:
+      "If someone says, 'I felt gabra before my presentation.' what does that imply about their feelings?",
+    options: [
+      "They were calm and relaxed.",
+      "They were excited and happy.",
+      "They were panicky or flustered.",
+      "They were confident and prepared.",
+    ],
     correct_answer: "They were panicky or flustered.",
   },
 
   {
     question_id: "3.8",
     quiz_id: "3.3",
-    question_text: "'Jialat! I gotta go.' what does 'jialat' imply in this context?",
-    options: ["They are feeling very relaxed.", "They are having a great time.", "They are excited about something.", "They are running late and in trouble."],
+    question_text:
+      "'Jialat! I gotta go.' what does 'jialat' imply in this context?",
+    options: [
+      "They are feeling very relaxed.",
+      "They are having a great time.",
+      "They are excited about something.",
+      "They are running late and in trouble.",
+    ],
     correct_answer: "They are running late and in trouble.",
   },
 
   {
     question_id: "3.9",
     quiz_id: "3.3",
-    question_text: "'Your prediction was super zhun!' What does 'zhun' imply in this context?",
-    options: ["Lucky or fortunate", "Accurate or correct", "Funny or entertaining", "Unexpected or surprising"],
+    question_text:
+      "'Your prediction was super zhun!' What does 'zhun' imply in this context?",
+    options: [
+      "Lucky or fortunate",
+      "Accurate or correct",
+      "Funny or entertaining",
+      "Unexpected or surprising",
+    ],
     correct_answer: "Accurate or correct",
   },
 ];
