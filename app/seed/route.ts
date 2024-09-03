@@ -221,7 +221,7 @@ export async function GET() {
       await seedQuestions();
       await seedAchievements();
       await client.sql`COMMIT`;
-  
+      
       return Response.json({ message: 'Database seeded successfully' });
     } catch (error) {
       await client.sql`ROLLBACK`;
