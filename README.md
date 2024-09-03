@@ -1,36 +1,90 @@
+# SinglishLA! - Singlish Learning App
+
+Welcome to the Singlish Learning App! This project is designed to help foreigners immerse themselves in Singaporean culture by learning Singlish, the colloquial English-based creole spoken in Singapore. The app provides insights into local customs, traditions, and linguistic nuances, equipping users with the skills to understand and use Singlish effectively.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## Table of Contents
 
-First, run the development server:
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Project Structure](#project-structure)
+- [License](#license)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Courses and Lessons**: Three courses, each containing three lessons, focused on different scenarios in Singapore, such as eating at a hawker centre, chatting with locals, and exploring attractions.
+- **Quizzes**: Each lesson is followed by a quiz with five questions to reinforce learning.
+- **Achievements**: Users earn badges for completing lessons and quizzes, fostering engagement and motivation.
+- **User Authentication**: Secure login for users and admins with email and password.
+- **Admin Management**: Admins can add new courses, lessons, quizzes, and vocabularies.
+- **Responsive UI**: The app features an intuitive, user-friendly interface accessible to all users, including those who are not tech-savvy.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- **Frontend**: Next.js, React
+- **Backend**: Next.js
+- **Database**: Vercel Postgres
+- **Authentication**: bcrypt for password hashing
+- **Deployment**: Vercel
+- **Package Manager**: pnpm
 
-## Learn More
+## Installation
 
-To learn more about Next.js, take a look at the following resources:
+To set up the project locally, follow these steps:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/yourusername/singlish-learning-app.git
+   ```
+   
+2. **Navigate to the project directory**:
+   ```bash
+   cd singlish-learning-app
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+3. **Install dependencies using pnpm**:
+   ```bash
+   pnpm install
+   ```
 
-## Deploy on Vercel
+4. **Set up environment variables**:
+   - Create a `.env` file in the root directory.
+   - Add your PostgreSQL database credentials and other environment-specific variables.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   Example `.env` file:
+   ```bash
+   DATABASE_URL=your_postgres_database_url
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+5. **Seed the database**:
+   ```bash
+   pnpm run seed
+   ```
+
+6. **Run the development server**:
+   ```bash
+   pnpm run dev
+   ```
+   The app will be available at `http://localhost:3000`.
+
+## Usage
+
+- **User Interface**: Access the app in your browser at `http://localhost:3000`.
+- **Admin Panel**: Log in as an admin to add or manage courses, lessons, quizzes, and vocabularies.
+- **Learning Path**: Start with the first course and progress through the lessons, taking quizzes and earning achievements along the way.
+
+## Project Structure
+
+- `pages/`: Contains the Next.js pages for both users and admins.
+- `components/`: Reusable React components used throughout the app.
+- `lib/`: Placeholder data and utility functions.
+- `styles/`: CSS and styling files.
+- `public/`: Static assets like images and icons.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+
