@@ -216,7 +216,7 @@ export async function GET() {
       await seedAdmins();
       await seedCourses();
       await seedLessons();
-      // await seedVocabs();
+      await seedVocabs();
       await seedQuizzes();
       await seedQuestions();
       await seedAchievements();
