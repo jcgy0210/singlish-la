@@ -16,7 +16,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ## Features
 
 - **Courses and Lessons**: Three courses, each containing three lessons, focused on different scenarios in Singapore, such as eating at a hawker centre, chatting with locals, and exploring attractions.
-- **Quizzes**: Each lesson is followed by a quiz with five questions to reinforce learning.
+- **Quizzes**: Each lesson is followed by a quiz with three questions to reinforce learning.
+- **Vocab dict**: The vocabs you learnt after lessons will be added into your personal dictionary in your profile.
 - **Achievements**: Users earn badges for completing lessons and quizzes, fostering engagement and motivation.
 - **User Authentication**: Secure login for users and admins with email and password.
 - **Admin Management**: Admins can add new courses, lessons, quizzes, and vocabularies.
