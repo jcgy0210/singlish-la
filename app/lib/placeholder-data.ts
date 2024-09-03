@@ -73,126 +73,54 @@ const lessons = [
     lesson_id: "1.1",
     course_id: "1",
     title: "Greetings and Introduction",
-    vocabList: [
-      { vocab_id: "1.1" },
-      { vocab_id: "1.2" },
-      { vocab_id: "1.3" },
-      { vocab_id: "1.4" },
-      { vocab_id: "1.5" },
-    ],
-    quiz: [{ quiz_id: "1.1" }],
   },
 
   {
     lesson_id: "1.2",
     course_id: "1",
     title: "Discussing Daily Life",
-    vocabList: [
-      { vocab_id: "1.6" },
-      { vocab_id: "1.7" },
-      { vocab_id: "1.8" },
-      { vocab_id: "1.9" },
-      { vocab_id: "1.10" },
-    ],
-    quiz: [{ quiz_id: "1.2" }],
   },
 
   {
     lesson_id: "1.3",
     course_id: "1",
     title: "Talking about the weather",
-    vocabList: [
-      { vocab_id: "1.11" },
-      { vocab_id: "1.12" },
-      { vocab_id: "1.13" },
-      { vocab_id: "1.14" },
-      { vocab_id: "1.15" },
-    ],
-    quiz: [{ quiz_id: "1.3" }],
   },
 
   {
     lesson_id: "2.1",
     course_id: "2",
     title: "Ordering food",
-    vocabList: [
-      { vocab_id: "2.1" },
-      { vocab_id: "2.2" },
-      { vocab_id: "2.3" },
-      { vocab_id: "2.4" },
-      { vocab_id: "2.5" },
-    ],
-    quiz: [{ quiz_id: "2.1" }],
   },
 
   {
     lesson_id: "2.2",
     course_id: "2",
     title: "Paying and Eating Etiquette",
-    vocabList: [
-      { vocab_id: "2.6" },
-      { vocab_id: "2.7" },
-      { vocab_id: "2.8" },
-      { vocab_id: "2.9" },
-      { vocab_id: "2.10" },
-    ],
-    quiz: [{ quiz_id: "2.2" }],
   },
 
   {
     lesson_id: "2.3",
     course_id: "2",
     title: "Interacting with Hawker Centre Staff",
-    vocabList: [
-      { vocab_id: "2.11" },
-      { vocab_id: "2.12" },
-      { vocab_id: "2.13" },
-      { vocab_id: "2.14" },
-      { vocab_id: "2.15" },
-    ],
-    quiz: [{ quiz_id: "2.3" }],
   },
 
   {
     lesson_id: "3.1",
     course_id: "3",
     title: "Asking for directions",
-    vocabList: [
-      { vocab_id: "3.1" },
-      { vocab_id: "3.2" },
-      { vocab_id: "3.3" },
-      { vocab_id: "3.4" },
-      { vocab_id: "3.5" },
-    ],
-    quiz: [{ quiz_id: "3.1" }],
   },
 
   {
     lesson_id: "3.2",
     course_id: "3",
     title: "Recommending Places to Eat",
-    vocabList: [
-      { vocab_id: "3.6" },
-      { vocab_id: "3.7" },
-      { vocab_id: "3.8" },
-      { vocab_id: "3.9" },
-      { vocab_id: "3.10" },
-    ],
-    quiz: [{ quiz_id: "3.2" }],
   },
 
   {
     lesson_id: "3.3",
     course_id: "3",
     title: "Talking about Popular Attractions",
-    vocabList: [
-      { vocab_id: "3.11" },
-      { vocab_id: "3.12" },
-      { vocab_id: "3.13" },
-      { vocab_id: "3.14" },
-      { vocab_id: "3.15" },
-    ],
-    quiz: [{ quiz_id: "3.3" }],
   },
 ];
 
@@ -201,6 +129,7 @@ const lessons = [
 const vocabList = [
   {
     vocab_id: "1.1",
+    lesson_id: "1.1",
     vocab: "Walao eh",
     meaning: "Expressing surprise or disbelief",
     example: "Walao eh! This is unbelievable!",
@@ -208,6 +137,7 @@ const vocabList = [
 
   {
     vocab_id: "1.2",
+    lesson_id: "1.1",
     vocab: "Ang moh",
     meaning: "Caucasian",
     example: "That guy looks like an Ang moh",
@@ -215,6 +145,7 @@ const vocabList = [
 
   {
     vocab_id: "1.3",
+    lesson_id: "1.1",
     vocab: "Kopi-O",
     meaning: "Black Coffee",
     example: "Uncle, can I have one kopi-o!",
@@ -222,6 +153,7 @@ const vocabList = [
 
   {
     vocab_id: "1.4",
+    lesson_id: "1.1",
     vocab: "Boleh",
     meaning: "Can or Possible",
     example: "You want me to help you with this? Boleh!",
@@ -229,6 +161,7 @@ const vocabList = [
 
   {
     vocab_id: "1.5",
+    lesson_id: "1.1",
     vocab: "Boh chup",
     meaning: "Nonchalent or indifferent attitude",
     example: "Look at the way this guy does his work, it is so boh chup!",
@@ -236,6 +169,7 @@ const vocabList = [
 
   {
     vocab_id: "1.6",
+    lesson_id: "1.2",
     vocab: "Kaypoh",
     meaning: "Busybody",
     example: "What are you looking at? Do not be so kaypoh!",
@@ -243,6 +177,7 @@ const vocabList = [
 
   {
     vocab_id: "1.7",
+    lesson_id: "1.2",
     vocab: "Steady",
     meaning: "Reliable or Cool",
     example: "Ok steady, I get this done by tomorrow",
@@ -250,6 +185,7 @@ const vocabList = [
 
   {
     vocab_id: "1.8",
+    lesson_id: "1.2",
     vocab: "Kopi tiam",
     meaning: "Coffeeshop",
     example: "Lets go to this kopi tiam to eat today.",
@@ -257,6 +193,7 @@ const vocabList = [
 
   {
     vocab_id: "1.9",
+    lesson_id: "1.2",
     vocab: "Gong gong",
     meaning: "Clueless or naive",
     example: "What is this guy doing? He looks a little bit gong gong",
@@ -264,6 +201,7 @@ const vocabList = [
 
   {
     vocab_id: "1.10",
+    lesson_id: "1.2",
     vocab: "Ponteng",
     meaning: "Skip or avoid (mostly used in the context of school)",
     example: "I did not see you in class just now, you ponteng class right?",
@@ -271,6 +209,7 @@ const vocabList = [
 
   {
     vocab_id: "1.11",
+    lesson_id: "1.3",
     vocab: "Sien",
     meaning: "Bored or tired",
     example: "I am so sian of this guy showing me attitude",
@@ -278,6 +217,7 @@ const vocabList = [
 
   {
     vocab_id: "1.12",
+    lesson_id: "1.3",
     vocab: "Huat",
     meaning: "Prosper or Win big",
     example: "I hope you will huat this year and earn big bucks!",
@@ -285,6 +225,7 @@ const vocabList = [
 
   {
     vocab_id: "1.13",
+    lesson_id: "1.3",
     vocab: "Malu",
     meaning: "Embarrassed",
     example: "Just now that incident make me damn malu",
@@ -292,6 +233,7 @@ const vocabList = [
 
   {
     vocab_id: "1.14",
+    lesson_id: "1.3",
     vocab: "Alamak",
     meaning: "Expression of surprise or dismay",
     example: "Alamak! I forgot to bring my wallet out of the house!",
@@ -299,6 +241,7 @@ const vocabList = [
 
   {
     vocab_id: "1.15",
+    lesson_id: "1.3",
     vocab: "Lepak",
     meaning: "Relax or Chill",
     example:
@@ -307,6 +250,7 @@ const vocabList = [
 
   {
     vocab_id: "2.1",
+    lesson_id: "2.1",
     vocab: "Makan",
     meaning: "Eat",
     example: "Want to go makan now?",
@@ -314,6 +258,7 @@ const vocabList = [
 
   {
     vocab_id: "2.2",
+    lesson_id: "2.1",
     vocab: "Chope",
     meaning: "Reserve",
     example: "I help you chope this seat, go buy food.",
@@ -321,6 +266,7 @@ const vocabList = [
 
   {
     vocab_id: "2.3",
+    lesson_id: "2.1",
     vocab: "Lai",
     meaning: "Come",
     example: "Lai, we can go have lunch now",
@@ -328,6 +274,7 @@ const vocabList = [
 
   {
     vocab_id: "2.4",
+    lesson_id: "2.1",
     vocab: "Lim kopi",
     meaning: "Drink Coffee",
     example: "Wa! I am so tired, want to go lim kopi?",
@@ -335,6 +282,7 @@ const vocabList = [
 
   {
     vocab_id: "2.5",
+    lesson_id: "2.1",
     vocab: "Shiok",
     meaning: "Very satisfying or delicious",
     example: "Wow this bowl of chicken rice is very shiok!",
@@ -342,6 +290,7 @@ const vocabList = [
 
   {
     vocab_id: "2.6",
+    lesson_id: "2.2",
     vocab: "Paiseh",
     meaning: "Embarrassed or shy",
     example:
@@ -350,6 +299,7 @@ const vocabList = [
 
   {
     vocab_id: "2.7",
+    lesson_id: "2.2",
     vocab: "Auntie/Uncle",
     meaning: "Respectful way of addressing older people",
     example: "Auntie/Uncle! How has your day been?",
@@ -357,6 +307,7 @@ const vocabList = [
 
   {
     vocab_id: "2.8",
+    lesson_id: "2.2",
     vocab: "Suka",
     meaning: "To do according to his or her own wishes",
     example:
@@ -365,6 +316,7 @@ const vocabList = [
 
   {
     vocab_id: "2.9",
+    lesson_id: "2.2",
     vocab: "Da bao",
     meaning: "Takeaway",
     example: "Uncle can I da bao one fish ball noodle! Thank you!",
@@ -372,6 +324,7 @@ const vocabList = [
 
   {
     vocab_id: "2.10",
+    lesson_id: "2.2",
     vocab: "Kiasu",
     meaning: "Fear of losing out",
     example: "Wow are you that kiasu? It is only a bowl of noodles!",
@@ -379,6 +332,7 @@ const vocabList = [
 
   {
     vocab_id: "2.11",
+    lesson_id: "2.3",
     vocab: "Gai-gai",
     meaning: "Walk around or stroll",
     example: "Want to go gai gai on friday?",
@@ -386,6 +340,7 @@ const vocabList = [
 
   {
     vocab_id: "2.12",
+    lesson_id: "2.3",
     vocab: "Tumpang",
     meaning: "Hitching a ride",
     example: "Can I tumpang your car home?",
@@ -393,6 +348,7 @@ const vocabList = [
 
   {
     vocab_id: "2.13",
+    lesson_id: "2.3",
     vocab: "Pang gang",
     meaning: "Finish work or close shop",
     example: "Finally done with this proposal, time to pang gang!",
@@ -400,6 +356,7 @@ const vocabList = [
 
   {
     vocab_id: "2.14",
+    lesson_id: "2.3",
     vocab: "Abuden",
     meaning: "'Obviously' in a rude manner",
     example: "Abuden! Why are you asking such an obvious question!",
@@ -407,6 +364,7 @@ const vocabList = [
 
   {
     vocab_id: "2.15",
+    lesson_id: "2.3",
     vocab: "Onz",
     meaning: "Agree or confirm",
     example: "This Saturday football game? Okay onz!",
@@ -414,6 +372,7 @@ const vocabList = [
 
   {
     vocab_id: "3.1",
+    lesson_id: "3.1",
     vocab: "Ulu",
     meaning: "Remote or far away",
     example:
@@ -422,6 +381,7 @@ const vocabList = [
 
   {
     vocab_id: "3.2",
+    lesson_id: "3.1",
     vocab: "Sotong",
     meaning: "Blur or clueless",
     example: "Look at the way he does his work! Obviously a blur sotong!",
@@ -429,6 +389,7 @@ const vocabList = [
 
   {
     vocab_id: "3.3",
+    lesson_id: "3.1",
     vocab: "Agak-agak",
     meaning: "Estimate",
     example:
@@ -437,6 +398,7 @@ const vocabList = [
 
   {
     vocab_id: "3.4",
+    lesson_id: "3.1",
     vocab: "Suagu",
     meaning: "Outdated or ignorant",
     example: "This guy damn suagu! He does not even know how to turn on the TV",
@@ -444,6 +406,7 @@ const vocabList = [
 
   {
     vocab_id: "3.5",
+    lesson_id: "3.1",
     vocab: "Blanja",
     meaning: "Treat someone",
     example: "Since it is your birthday, let me blanja you this lunch",
@@ -451,12 +414,14 @@ const vocabList = [
 
   {
     vocab_id: "3.6",
+    lesson_id: "3.2",
     vocab: "Sedap",
     meaning: "Delicious",
     example:"The laksa from this place damn sedap!",
   },
   {
     vocab_id: "3.7",
+    lesson_id: "3.2",
     vocab: "Chiong",
     meaning: "Rush or charge",
     example:
@@ -464,12 +429,14 @@ const vocabList = [
   },
   {
     vocab_id: "3.8",
+    lesson_id: "3.2",
     vocab: "Kena",
     meaning: "Receive or get (usually something negative)",
     example: "Oh no you kena fine for parking your car in an illegal spot",
   },
   {
     vocab_id: "3.9",
+    lesson_id: "3.2",
     vocab: "Solid",
     meaning: "Excellent, dependable, or very good",
     example:
@@ -477,12 +444,14 @@ const vocabList = [
   },
   {
     vocab_id: "3.10",
+    lesson_id: "3.2",
     vocab: "Koyak",
     meaning: "Torn or damaged, can also mean tired",
     example: "This book koyak already, look at the state of it!",
   },
   {
     vocab_id: "3.11",
+    lesson_id: "3.3",
     vocab: "Gabra",
     meaning: "Panicky or flustered",
     example:
@@ -490,6 +459,7 @@ const vocabList = [
   },
   {
     vocab_id: "3.12",
+    lesson_id: "3.3",
     vocab: "Jialat",
     meaning: "In trouble or difficult situation",
     example:
@@ -497,18 +467,21 @@ const vocabList = [
   },
   {
     vocab_id: "3.13",
+    lesson_id: "3.3",
     vocab: "Lelong",
     meaning: "Auction or Sell",
     example: "Lelong ah Lelong! Cheap shirts on sale here!",
   },
   {
     vocab_id: "3.14",
+    lesson_id: "3.3",
     vocab: "Peng san",
     meaning: "Faint or exhausted",
     example: "He do work until he peng san.",
   },
   {
     vocab_id: "3.15",
+    lesson_id: "3.3",
     vocab: "Zhun",
     meaning: "Accurate",
     example: "Wow your measurements are so zhun! Exactly one meter!",
@@ -522,99 +495,54 @@ const quizzes = [
     quiz_id: "1.1",
     lesson_id: "1.1",
     title: "Quiz 1.1",
-    questions: [
-      { question_id: "1.1" },
-      { question_id: "1.2" },
-      { question_id: "1.3" },
-    ],
   },
 
   {
     quiz_id: "1.2",
     lesson_id: "1.2",
     title: "Quiz 1.2",
-    questions: [
-      { question_id: "1.4" },
-      { question_id: "1.5" },
-      { question_id: "1.6" },
-    ],
   },
 
   {
     quiz_id: "1.3",
     lesson_id: "1.3",
     title: "Quiz 1.3",
-    questions: [
-      { question_id: "1.7" },
-      { question_id: "1.8" },
-      { question_id: "1.9" },
-    ],
   },
 
   {
     quiz_id: "2.1",
     lesson_id: "2.1",
     title: "Quiz 2.1",
-    questions: [
-      { question_id: "2.1" },
-      { question_id: "2.2" },
-      { question_id: "2.3" },
-    ],
   },
 
   {
     quiz_id: "2.2",
     lesson_id: "2.2",
     title: "Quiz 2.2",
-    questions: [
-      { question_id: "2.4" },
-      { question_id: "2.5" },
-      { question_id: "2.6" },
-    ],
   },
 
   {
     quiz_id: "2.3",
     lesson_id: "2.3",
     title: "Quiz 2.3",
-    questions: [
-      { question_id: "2.7" },
-      { question_id: "2.8" },
-      { question_id: "2.9" },
-    ],
   },
 
   {
     quiz_id: "3.1",
     lesson_id: "3.1",
     title: "Quiz 3.1",
-    questions: [
-      { question_id: "3.1" },
-      { question_id: "3.2" },
-      { question_id: "3.3" },
-    ],
   },
 
   {
     quiz_id: "3.2",
     lesson_id: "3.2",
     title: "Quiz 3.2",
-    questions: [
-      { question_id: "3.4" },
-      { question_id: "3.5" },
-      { question_id: "3.6" },
-    ],
   },
 
   {
     quiz_id: "3.3",
     lesson_id: "3.3",
     title: "Quiz 3.3",
-    questions: [
-      { question_id: "3.7" },
-      { question_id: "3.8" },
-      { question_id: "3.9" },
-    ],
   },
 ];
 
