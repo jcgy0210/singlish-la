@@ -155,7 +155,7 @@ export async function fetchCorrectAnswerByID(id: string){
 
 export async function fetchAcheivementByID(id: string){
     try{
-      const data = await sql<Question> `
+      const data = await sql<Achievements> `
       SELECT
         achievement.achievement,
         achievement.description,
