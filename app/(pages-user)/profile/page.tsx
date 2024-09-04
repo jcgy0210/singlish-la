@@ -1,8 +1,8 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-import Header from "@/app/components/Header";
-import Menu from "@/app/components/Menu";
+import Header from "@/app/(pages-user)/components/Header";
+import Menu from "@/app/(pages-user)/components/Menu";
 
 export default function ProfilePage() {
   const [pageVisible, setPageVisibility] = useState(true);

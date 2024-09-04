@@ -1,11 +1,11 @@
 "use client";
 import RecentCourse from "./components/RecentCourse";
-import Menu from "../../components/Menu";
+import Menu from "../components/Menu";
 import Image from "next/image";
 import Merli from "../../../public/merli_4.gif";
 import { useState } from "react";
 import Link from "next/link";
-import Header from "../../components/Header";
+import Header from "../components/Header";
 
 export default function HomePage() {
   const [pageVisible, setPageVisibility] = useState(true);

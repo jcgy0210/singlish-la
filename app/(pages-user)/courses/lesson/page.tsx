@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Menu from "@/app/components/Menu";
-import Header from "@/app/components/Header";
+import Menu from "@/app/(pages-user)/components/Menu";
+import Header from "@/app/(pages-user)/components/Header";
 const lessons = [
   {
     id: 1,
@@ -22,7 +22,7 @@ const lessons = [
   // Add more lessons as needed
 ];
 
-export default function LessonsPage() {
+export default function LessonPage() {
   const [searchTerm, setSearchTerm] = useState("");
 
   const filteredLessons = lessons.filter((lesson) =>

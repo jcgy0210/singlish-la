@@ -1,9 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
-import Header from "../../components/Header";
-import Menu from "../../components/Menu";
+import Header from "../components/Header";
+import Menu from "../components/Menu";
 
 type Lesson = {
   id: number;

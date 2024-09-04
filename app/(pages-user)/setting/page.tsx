@@ -1,13 +1,13 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import DarkMode from "./components/DarkMode";
 import ProfileInfo from "./components/ProfileInfo";
-import { useState } from "react";
 import FAQSection from "./components/FAQSection";
 import ContactUs from "./components/ContactUs";
-import Menu from "../../components/Menu";
-import Header from "@/app/components/Header";
+import Menu from "../components/Menu";
+import Header from "@/app/(pages-user)/components/Header";
 
 export default function SettingsPage() {
   const [pageCondition, setPageCondition] = useState(0);

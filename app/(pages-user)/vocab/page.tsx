@@ -1,9 +1,8 @@
 "use client";
 import { useState } from "react";
-import Menu from "../../components/Menu";
+import Menu from "../components/Menu";
 import VocabCard from "./components/VocabCard";
-import Header from "../../components/Header";
-import Phrases from "./components/Phrases";
+import Header from "../components/Header";
 
 export default function Vocab() {
   const data = [
