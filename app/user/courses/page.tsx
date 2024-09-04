@@ -36,6 +36,7 @@ export default function CoursesPage() {
   );
 
   const [pageVisible, setPageVisibility] = useState(true);
+  console.log("courses: " +fetchCourseByID("1"));
 
   return (
     <main className="min-h-screen p-4 md:p-8 bg-background-light dark:bg-background-dark">
