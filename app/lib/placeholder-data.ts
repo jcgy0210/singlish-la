@@ -46,21 +46,21 @@ const admins = [
 const courses = [
   {
     course_id: "1",
-    title: "Hello",
+    title: "Course 1 - Hello",
     description:
       "Teach users how to engage in casual converstations with Singaporeans of different cultural backgrounds.",
   },
 
   {
     course_id: "2",
-    title: "Makan Makan",
+    title: "Course 2 - Makan-Makan",
     description:
       "Familiarise users with common Singlish expressions and vocabularies used when dining at a hawker centre.",
   },
 
   {
     course_id: "3",
-    title: "Bojio!",
+    title: "Course 3 - Bojio!",
     description:
       "Equip users with the ability to ask for directions and recommendations for places to visit in Singapore.",
   },

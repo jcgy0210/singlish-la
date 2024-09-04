@@ -1,7 +1,4 @@
 import { signOutAction } from "@/app/lib/actions";
-
-
-
 import Link from "next/link";
 
 interface Props {
@@ -51,28 +48,28 @@ const Menu = ({ onClose }: Props) => {
 
       <div className="flex flex-col justify-stretch text-3xl font-bold p-4 text-text-light dark:text-text-dark">
         <Link
-          href="\home"
+          href="/user/home"
           className="menu-button p-4 w-fill flex place-content-end text-red hover:text-white hover:bg-red"
         >
           <h3>HOME</h3>
         </Link>
 
         <Link
-          href="\courses"
+          href="/user/courses"
           className="menu-button p-4 w-fill flex place-content-end hover:text-white hover:bg-red"
         >
           <h3>COURSES</h3>
         </Link>
 
         <Link
-          href="\vocab"
+          href="/user/vocab"
           className="menu-button p-4 w-fill flex place-content-end hover:text-white hover:bg-red"
         >
           <h3>VOCABULARY</h3>
         </Link>
 
         <Link
-          href="\setting"
+          href="/user/setting"
           className="menu-button p-4 w-fill flex place-content-end hover:text-white hover:bg-red"
         >
           <h3>SETTINGS</h3>
@@ -82,14 +79,13 @@ const Menu = ({ onClose }: Props) => {
           action={async () => {
             await signOutAction(); // Call the server-side sign-out function
           }}
+          className="log-out-button effect flex place-self-end rounded-xl mt-4 p-4 text-white text-center text-sm font-bold bg-red"
         >
-          <button
-            type="submit"
-            className="log-out-button my-4 rounded-xl p-2 text-white text-center"
-          >
+          <button type="submit"> 
             Log Out ah?
           </button>
-        </form>      </div>
+        </form>      
+        </div>
     </div>
   );
 };

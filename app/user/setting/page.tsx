@@ -6,8 +6,8 @@ import ProfileInfo from "./components/ProfileInfo";
 import { useState } from "react";
 import FAQSection from "./components/FAQSection";
 import ContactUs from "./components/ContactUs";
-import Menu from "../../components/Menu";
-import Header from "@/app/components/Header";
+import Menu from "../components/Menu";
+import Header from "@/app/user/components/Header";
 
 export default function SettingsPage() {
   const [profileInfo, setProfileInfoVisibility] = useState(false);

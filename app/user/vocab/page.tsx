@@ -1,11 +1,11 @@
 "use client";
 import { useState } from "react";
-import Menu from "../../components/Menu";
+import Menu from "../components/Menu";
 import VocabCard from "./components/VocabCard";
-import Header from "../../components/Header";
+import Header from "../components/Header";
 import Phrases from "./components/Phrases";
 
-export default function Vocab() {
+export default function VocabPage() {
   const data = [
     {
       phrase: "Shiok",

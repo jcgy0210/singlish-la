@@ -1,23 +1,30 @@
 "use client";
 
 import { useState } from "react";
-import Menu from "@/app/components/Menu";
-import Header from "@/app/components/Header";
-const lessons = [
+import Menu from "@/app/user/components/Menu";
+import Header from "@/app/user/components/Header";
+import { fetchCourseByID } from "@/app/lib/data";
+
+const courses = [
   {
-    id: 1,
-    title: "Course 1",
-    description: "Summary",
+    course_id: "1",
+    title: "Course 1 - Hello",
+    description:
+      "Teach users how to engage in casual converstations with Singaporeans of different cultural backgrounds.",
   },
+
   {
-    id: 2,
-    title: "Course 2",
-    description: "Summary",
+    course_id: "2",
+    title: "Course 2 - Makan-Makan",
+    description:
+      "Familiarise users with common Singlish expressions and vocabularies used when dining at a hawker centre.",
   },
+
   {
-    id: 3,
-    title: "Course 3",
-    description: "Summary",
+    course_id: "3",
+    title: "Course 3 - Bojio!",
+    description:
+      "Equip users with the ability to ask for directions and recommendations for places to visit in Singapore.",
   },
 ];
 
@@ -36,7 +43,7 @@ export default function CoursesPage() {
 
       {pageVisible && (
         <Header
-          title="Lessons"
+          title="Courses"
           onClick={() => setPageVisibility(false)}
         ></Header>
       )}
@@ -46,29 +53,30 @@ export default function CoursesPage() {
           <div className="mb-6">
             <input
               type="text"
-              placeholder="Search lessons..."
+              placeholder="Search courses..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red focus:border-transparent"
             />
           </div>
 
-        <ul className="space-y-4">
-          {filteredCourses.map(course => (
-            <li key={course.id} className="bg-white p-4 rounded-lg shadow-md">
-              <h2 className="text-xl font-semibold text-gray-900">{course.title}</h2>
-              <p className="mt-2 text-gray-600">{course.description}</p>
-              
-              <button
-                className="mt-4 w-full py-2 px-4 bg-[#900603] text-white font-medium rounded-md hover:bg-[#700404] focus:outline-none focus:ring-2 focus:ring-[#900603] focus:ring-offset-2"
-                onClick={() => alert(`Enrolled in ${course.title}`)}
-              >
-                Lesson
-              </button>
-            </li>
-          ))}
-        </ul>
-      </div>
+          <ul className="space-y-4">
+            {filteredCourses.map(course => (
+              <li key={course.course_id} className="bg-white p-4 rounded-lg shadow-md">
+                <h2 className="text-xl font-semibold text-gray-900">{course.title}</h2>
+                <p className="mt-2 text-gray-600">{course.description}</p>
+                
+                <button
+                  className="mt-4 w-full py-2 px-4 bg-[#900603] text-white font-medium rounded-md hover:bg-[#700404] focus:outline-none focus:ring-2 focus:ring-[#900603] focus:ring-offset-2"
+                  onClick={() => alert(`Enrolled in ${course.title}`)}
+                >
+                  Lesson
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </main>
   );
 }

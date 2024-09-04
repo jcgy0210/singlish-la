@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Menu from "@/app/components/Menu";
+import Menu from "@/app/user/components/Menu";
 
 type Lesson = {
   id: number;
