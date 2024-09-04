@@ -85,22 +85,17 @@ async function seedLessons() {
     CREATE TABLE IF NOT EXISTS lessons (
       lesson_id VARCHAR(10) PRIMARY KEY, 
       course_id VARCHAR(10) REFERENCES courses(course_id) ON DELETE CASCADE, 
-      title TEXT NOT NULL,
-      vocabList JSONB, 
-      quiz JSONB 
+      title TEXT NOT NULL
     );
   `;
   const insertedLessons = await Promise.all(
     lessons.map(async (lesson) => {
-        // console.log('vocabList: ', JSON.stringify(lesson.vocabList));
       return client.sql`
-        INSERT INTO lessons (lesson_id, course_id, title, vocabList, quiz)
+        INSERT INTO lessons (lesson_id, course_id, title)
         VALUES (
           ${lesson.lesson_id}, 
           ${lesson.course_id}, 
-          ${lesson.title}, 
-          ${JSON.stringify(lesson.vocabList)}, 
-          ${JSON.stringify(lesson.quiz)}
+          ${lesson.title}
         )
         ON CONFLICT (lesson_id) DO NOTHING;  
       `;
@@ -109,12 +104,12 @@ async function seedLessons() {
 
   return insertedLessons;
 } 
-//If the data appears correct in the database but shows incorrectly when retrieved, ensure you're using JSON.parse() when fetching and processing the vocabList and quiz data.
 
 async function seedVocabs(){
     await client.sql`
         CREATE TABLE IF NOT EXISTS vocabList (
             vocab_id VARCHAR(10) PRIMARY KEY,
+            lesson_id VARCHAR(10) REFERENCES lessons(lesson_id) ON DELETE CASCADE,
             vocab TEXT NOT NULL,
             meaning TEXT NOT NULL,
             example TEXT NOT NULL
@@ -123,9 +118,9 @@ async function seedVocabs(){
     const insertedVocabs = await Promise.all(
         vocabList.map(async (vocab) => {
             return client.sql`
-                INSERT INTO vocabList (vocab_id, vocab, meaning, example)
+                INSERT INTO vocabList (vocab_id, lesson_id, vocab, meaning, example)
                 VALUES (
-                    ${vocab.vocab_id}, ${vocab.vocab}, ${vocab.meaning}, ${vocab.example}
+                    ${vocab.vocab_id}, ${vocab.lesson_id}, ${vocab.vocab}, ${vocab.meaning}, ${vocab.example}
                 )
                 ON CONFLICT (vocab_id) DO NOTHING;
             `;
@@ -140,15 +135,14 @@ async function seedQuizzes() {
         CREATE TABLE IF NOT EXISTS quizzes (
             quiz_id VARCHAR(10) PRIMARY KEY,
             lesson_id VARCHAR(10) REFERENCES lessons(lesson_id) ON DELETE CASCADE,
-            title TEXT NOT NULL,
-            questions JSONB
+            title TEXT NOT NULL
         );
     `;
     const insertedQuizzes = await Promise.all(
         quizzes.map(async (quiz) => {
             return client.sql`
-                INSERT INTO quizzes (quiz_id, lesson_id, title, questions)
-                VALUES (${quiz.quiz_id}, ${quiz.lesson_id}, ${quiz.title}, ${JSON.stringify(quiz.questions)})
+                INSERT INTO quizzes (quiz_id, lesson_id, title)
+                VALUES (${quiz.quiz_id}, ${quiz.lesson_id}, ${quiz.title})
                 ON CONFLICT (quiz_id) DO NOTHING;
             `;
         }),
@@ -217,7 +211,7 @@ async function seedAchievements(){
 
 export async function GET() {
     try {
-      await client.sql`BEGIN`
+      await client.sql`BEGIN`;
       await seedUsers();
       await seedAdmins();
       await seedCourses();

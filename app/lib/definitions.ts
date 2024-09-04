@@ -17,6 +17,7 @@ export type Admin = {
 
 export type VocabList = {
     vocab_id: string;
+    lesson_id: string; // Foreign key to the lesson
     vocab: string;
     meaning: string;
     example: string;
@@ -34,23 +35,18 @@ export type Courses = {
     course_id: string;
     title: string;
     description: string;
-    lessons: Lesson[];
 };
 
 export type Lesson = {
     lesson_id: string;
     course_id: string; // Foreign key to the course
     title: string;
-    content: string;
-    vocabList: VocabList[];
-    quiz: Quiz[];
 };
 
 export type Quiz = {
     quiz_id: string;          
     lesson_id: string; // Foreign key to the lesson         
     title: string;           
-    questions: Question[];    
 };
 
 export type Question = {
