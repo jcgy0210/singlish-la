@@ -2,6 +2,7 @@
 
 import { z } from 'zod';
 import { sql } from '@vercel/postgres';
+import bcrypt from 'bcrypt';
 import { revalidatePath } from 'next/cache'; 
 import { redirect } from 'next/navigation';
 import { signIn } from '@/auth';
@@ -605,4 +606,59 @@ export async function authenticate(
 export async function signOutAction() {
   'use server'; 
   await signOut(); 
+}
+
+// Sign up
+// Define the schema for user registration
+const UserFormSchema = z.object({
+  name: z.string().min(1, "Name is required"),
+  email: z.string().email("Invalid email address"),
+  password: z.string().min(6, "Password must be at least 6 characters long"),
+});
+
+// Create user schemas
+const CreateUser = UserFormSchema;
+
+// Type for user registration state
+export type UserState = {
+  errors?: {
+    name?: string[];
+    email?: string[];
+    password?: string[];
+  };
+  message?: string | null;
+};
+
+// Async function to register a new user
+export async function register(formData: FormData) {
+  const validatedFields = CreateUser.safeParse({
+    name: formData.get("name"),
+    email: formData.get("email"),
+    password: formData.get("password"),
+  });
+
+  if (!validatedFields.success) {
+    return {
+      errors: validatedFields.error.flatten().fieldErrors,
+      message: "Missing fields. Failed to register.",
+    };
+  }
+
+  const { name, email, password } = validatedFields.data;
+  const hashedPassword = await bcrypt.hash(password, 10);
+
+  try {
+    await sql`
+      INSERT INTO users (name, email, password)
+      VALUES (${name}, ${email}, ${hashedPassword})`; 
+  } catch (error) {
+    console.error("Database Error:", error);
+    return {
+      message: "Database Error: Failed to register user.",
+    };
+  }
+
+  return {
+    message: "User registered successfully.",
+  };
 }
