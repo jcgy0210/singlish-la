@@ -116,25 +116,6 @@ export default function LoginForm() {
         </div>
 
         <div className="flex items-center justify-between">
-          <div className="flex items-center">
-            <input
-              id="remember-me"
-              name="remember-me"
-              type="checkbox"
-              className="h-4 w-4 border-gray-300 rounded"
-              style={{
-                accentColor: "#900603",
-                borderColor: "#900603",
-              }}
-            />
-            <label
-              htmlFor="remember-me"
-              className="ml-2 block text-sm text-gray-900"
-            >
-              Save login info, can?
-            </label>
-          </div>
-
           <div className="text-sm">
             <a
               href="#"
