@@ -57,13 +57,13 @@ export default function SignupForm() {
             priority
             className="mx-auto"
           />
-          <h2 className="mt-6 text-2xl md:text-3xl font-extrabold text-[#900603]">
+          <h2 className="mt-6 text-2xl md:text-3xl font-extrabold text-red">
             Create your account
           </h2>
         </div>
 
         {errorMessage && (
-          <div className="text-red-500 text-center">{errorMessage}</div>
+          <div className="text-red text-center">{errorMessage}</div>
         )}
 
         <div className="rounded-md shadow-sm -space-y-px">
@@ -137,23 +137,11 @@ export default function SignupForm() {
 
         {/* Add a link to go back to the login page */}
         <div className="text-center">
-          <Link href="/login" className="text-sm font-medium text-[#900603]">
+          <Link href="/login" className="text-sm font-medium text-red">
             Back to Login
           </Link>
         </div>
       </div>
-      <div 
-          className="flex h-8 items-end space-x-1"
-          aria-live="polite"
-          aria-atomic="true"
-        >
-          {/* Add form errors here */}
-          {errorMessage && (
-            <>
-              <p className="text-sm text-red-500">{errorMessage}</p>
-            </>
-          )}
-        </div>
     </form>
   );
 }

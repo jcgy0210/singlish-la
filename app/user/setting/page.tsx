@@ -129,7 +129,7 @@ export default function SettingsPage() {
                 </div>
               </div>
 
-              <Link href="\home" className="">
+              <Link href="/user/home" className="">
                 <h3>Delete Account</h3>
               </Link>
             </div>

@@ -21,8 +21,8 @@ export default function ProfileePage() {
       {pageVisible && (
         // Body
         <div className="w-full max-w-4xl mx-auto flex flex-col gap-8">
-          {/* Profile Pic/Bio Section */}
-          <div className="flex flex-col gap-4 p-4 place-items-center">
+          {/* Profile Pic & Name Section */}
+          <div className="flex flex-col gap-4 p-4 items-center">
             <div className="w-36">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -30,7 +30,6 @@ export default function ProfileePage() {
                 viewBox="0 0 24 24"
                 strokeWidth={2}
                 stroke="#900603"
-                className="size-16"
               >
                 <path
                   strokeLinecap="round"
@@ -52,7 +51,7 @@ export default function ProfileePage() {
           {/* Achievements Section */}
           <div className="flex flex-col border-2 border-red rounded-2xl">
             <div className="flex flex-row p-4 bg-red rounded-t-xl">
-              <h2 className="flex-grow text-center ml-10">Achievements</h2>
+              <h2 className="flex-grow text-center ml-16">Achievements</h2>
 
               <div className="w-10">
                 <Link href="https://">

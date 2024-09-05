@@ -9,32 +9,32 @@ const Menu = ({ onClose }: Props) => {
   return (
     <div className="min-h-screen bg-background-light dark:bg-background-dark">
       <div className="flex flex-row p-4">
-        <button className="w-16" onClick={onClose}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={2}
-            stroke="#900603"
-            className="size-10"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M15.75 19.5 8.25 12 l7.5-7.5"
-            />
-          </svg>
-        </button>
-
-        <div className="flex-grow flex flex-col">
-          <Link href="\profile" className="place-self-end w-24">
+        <div className="flex-grow flex">
+          <button className="w-16" onClick={onClose}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth={2}
               stroke="#900603"
-              className="size-16"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M15.75 19.5 8.25 12 l7.5-7.5"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <button className="w-24 mr-4">
+          <Link href="/user/profile" className="w-24">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={2}
+              stroke="#900603"
             >
               <path
                 strokeLinecap="round"
@@ -43,7 +43,7 @@ const Menu = ({ onClose }: Props) => {
               />
             </svg>
           </Link>
-        </div>
+        </button>
       </div>
 
       <div className="flex flex-col justify-stretch text-3xl font-bold p-4 text-text-light dark:text-text-dark">
@@ -81,11 +81,9 @@ const Menu = ({ onClose }: Props) => {
           }}
           className="log-out-button effect flex place-self-end rounded-xl mt-4 p-4 text-white text-center text-sm font-bold bg-red"
         >
-          <button type="submit"> 
-            Log Out ah?
-          </button>
-        </form>      
-        </div>
+          <button type="submit">Log Out ah?</button>
+        </form>
+      </div>
     </div>
   );
 };
