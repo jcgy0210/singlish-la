@@ -37,35 +37,37 @@ export default function Vocab() {
     },
   ];
 
-  const [pageVisible, setPageVisibility] = useState(true);
+  const [menuIsOpen, setMenuIsOpen] = useState(false);
 
   return (
     <main className="min-h-screen p-4 md:p-8 bg-background-light dark:bg-background-dark">
-      {!pageVisible && <Menu onClose={() => setPageVisibility(true)}></Menu>}
+      {menuIsOpen && <Menu onClose={() => setMenuIsOpen(false)}></Menu>}
 
-      {pageVisible && (
-        <div>
-          <Header
-            title="What Word You Want Learn?"
-            onClick={() => setPageVisibility(false)}
-          ></Header>
+      {!menuIsOpen && (
+        <>
+          <div>
+            <Header
+              title="What Word You Want Learn?"
+              onClick={() => setMenuIsOpen(true)}
+            ></Header>
 
-          {/* Body */}
-          <div className="w-full max-w-4xl mx-auto p-4">
-            <ul className="flex flex-col gap-4 p-4 border-8 border-red text-red rounded-2xl">
-              {data.map((data) => (
-                <li className="flex flex-col gap-2 p-4 rounded-2xl hover:shadow-hovering hover:border-2 hover:border-red">
-                  <PhraseCard
-                    phrase={data.phrase}
-                    meaning={data.meaning}
-                    example1={data.example1}
-                    example2={data.example2}
-                  ></PhraseCard>
-                </li>
-              ))}
-            </ul>
+            {/* Body */}
+            <div className="w-full max-w-4xl mx-auto p-4">
+              <ul className="flex flex-col gap-4 p-4 border-8 border-red text-red rounded-2xl">
+                {data.map((data) => (
+                  <li className="flex flex-col gap-2 p-4 rounded-2xl hover:shadow-hovering hover:border-2 hover:border-red">
+                    <PhraseCard
+                      phrase={data.phrase}
+                      meaning={data.meaning}
+                      example1={data.example1}
+                      example2={data.example2}
+                    ></PhraseCard>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
-        </div>
+        </>
       )}
     </main>
   );

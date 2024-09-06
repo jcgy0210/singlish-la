@@ -1,6 +1,4 @@
-import Menu from "./Menu";
 import Image from "next/image";
-import { useState } from "react";
 
 interface Prop {
   title: string;
@@ -8,44 +6,38 @@ interface Prop {
 }
 
 const Header = ({ title, onClick }: Prop) => {
-  const [menuVisible, setMenuVisibility] = useState(false);
-
   return (
     <>
-      {menuVisible && <Menu onClose={() => setMenuVisibility(false)}></Menu>}
+      <header className="flex flex-row p-8">
+        <Image
+          src="/SinglishLA.png" // Replace with your actual logo path
+          alt="Logo"
+          width={120}
+          height={30}
+          priority
+        />
 
-      {!menuVisible && (
-        <header className="flex flex-row p-8">
-          <Image
-            src="/SinglishLA.png" // Replace with your actual logo path
-            alt="Logo"
-            width={120}
-            height={30}
-            priority
-          />
+        <div className="flex-grow grid place-content-center">
+          <h1 className="text-red dark:text-text-dark">{title}</h1>
+        </div>
 
-          <div className="flex-grow grid place-content-center">
-            <h1 className="text-red dark:text-text-dark">{title}</h1>
-          </div>
-
-          {/* Menu */}
-          <button className="m-6 w-16" onClick={onClick}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="#900603"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-              />
-            </svg>
-          </button>
-        </header>
-      )}
+        {/* Menu */}
+        <button className="m-6 w-16" onClick={onClick}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="#900603"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            />
+          </svg>
+        </button>
+      </header>
     </>
   );
 };
