@@ -66,12 +66,12 @@ export async function fetchCourseByID(id: string){
     try{
       const data = await sql<Courses> `
       SELECT
+        courses.course_id,
         courses.title,
-        courses.descriptions
+        courses.description
       FROM courses
-      WHERE corses.course_id = ${id};`;
-      const courses = data;
-      return courses;
+      WHERE courses.course_id = ${id};`;
+      return data;
     } catch (error) {
       console.error('Database Error:', error);
       throw new Error('Failed to fetch courses.');

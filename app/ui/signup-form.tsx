@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import Link from "next/link"; // Import the Link component
+import Link from "next/link"; 
 import { register } from "@/app/lib/actions";
 
 export default function SignupForm() {
@@ -17,7 +17,7 @@ export default function SignupForm() {
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsPending(true);
-    setErrorMessage(undefined); // Clear previous errors
+    setErrorMessage(undefined); 
 
     try {
       const formData = new FormData();
@@ -35,8 +35,8 @@ export default function SignupForm() {
         setErrorMessage(errorMessages); // Set the combined error messages
       } else {
         setErrorMessage(result.message); // Set the success or general message
-        // Optionally redirect to another page after successful signup
-        // router.push('/some-route');
+        // Redirect to the login page after successful registration
+        router.push('/login');
       }
     } catch (error) {
       setErrorMessage("Something went wrong. Please try again.");
@@ -69,7 +69,7 @@ export default function SignupForm() {
         <div className="rounded-md shadow-sm -space-y-px">
           <div>
             <label htmlFor="name" className="sr-only">
-              Your name
+              Name
             </label>
             <input
               id="name"
@@ -79,7 +79,7 @@ export default function SignupForm() {
               value={name}
               onChange={(e) => setName(e.target.value)}
               className="relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-              placeholder="Name"
+              placeholder="Your name"
             />
           </div>
           <div>
@@ -111,6 +111,9 @@ export default function SignupForm() {
               className="relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
               placeholder="Password"
             />
+            <p style={{ color: 'red' }} className="text-xs mt-1">
+              *at least 6 characters.
+            </p>
           </div>
         </div>
 
