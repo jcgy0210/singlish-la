@@ -69,7 +69,7 @@ export default function SignupForm() {
         <div className="rounded-md shadow-sm -space-y-px">
           <div>
             <label htmlFor="name" className="sr-only">
-              Name
+              Your name
             </label>
             <input
               id="name"
