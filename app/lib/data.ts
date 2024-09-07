@@ -66,6 +66,7 @@ export async function fetchCourseByID(id: string){
     try{
       const data = await sql<Courses> `
       SELECT
+        courses.course_id,
         courses.title,
         courses.description
       FROM courses

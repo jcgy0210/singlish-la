@@ -57,7 +57,6 @@ export default function ProfileePage() {
                       viewBox="0 0 24 24"
                       strokeWidth={2}
                       stroke="rgb(175,175,175)"
-                      className="size-7"
                     >
                       <path
                         strokeLinecap="round"

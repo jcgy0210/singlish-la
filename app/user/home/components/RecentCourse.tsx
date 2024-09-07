@@ -13,8 +13,8 @@ const RecentCourse = ({ names }: Props) => {
         <h3 className="text-red flex-grow">{names}</h3>
 
         <Link
-          className="p-2 place-self-center text-center rounded-xl bg-red text-white"
-          href="\courses"
+          className="p-2 place-self-center text-center rounded-xl bg-red text-white hover:shadow-hovering active:shadow-clicked"
+          href="/user/courses"
         >
           <button>Continue</button>
         </Link>

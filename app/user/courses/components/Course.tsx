@@ -4,18 +4,32 @@ import { useState } from "react";
 interface Prop {
   title: string;
   description: string;
-  lessons: { title: string; description: string; meaning: string }[];
-  quiz: string;
-  openLesson: () => void;
-  openQuiz: () => void;
+  lessons: {
+    id: number;
+    title: string;
+    description: string;
+    meaning: string;
+  }[];
+  openLesson: (lessonTitle: number) => void;
+  quiz: {
+    id: number;
+    quizName: string;
+    quizQuestions: {
+      id: number;
+      question: string;
+      options: string[];
+      correctAnswer: string;
+    }[];
+  };
+  openQuiz: (quizid: number) => void;
 }
 
 const Course = ({
   title,
   description,
   lessons,
-  quiz,
   openLesson,
+  quiz,
   openQuiz,
 }: Prop) => {
   const [listVisible, setListVisibility] = useState(false);
@@ -74,19 +88,22 @@ const Course = ({
       {listVisible && (
         <ul className="text-center text-red dark:text-text-dark">
           {lessons.map((lessons) => (
-            <li
-              className="w-100 p-2 my-2 border-2 border-red hover:bg-red hover:text-text-dark rounded-xl"
-              key={lessons.title}
-            >
-              <button onClick={openLesson}>
+            <li key={lessons.id}>
+              <button
+                className="w-full p-2 my-2 border-2 border-red hover:bg-red hover:text-text-dark rounded-xl"
+                onClick={() => openLesson(lessons.id)}
+              >
                 <h4>{lessons.title}</h4>
               </button>
             </li>
           ))}
 
-          <li className="w-100 p-2 my-2 border-2 border-red hover:bg-red hover:text-text-dark rounded-xl">
-            <button onClick={openQuiz}>
-              <h4>{quiz}</h4>
+          <li>
+            <button
+              className="w-full p-2 my-2 border-2 border-red hover:bg-red hover:text-text-dark rounded-xl"
+              onClick={() => openQuiz(quiz.id)}
+            >
+              <h4>{quiz.quizName}</h4>
             </button>
           </li>
         </ul>

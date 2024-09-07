@@ -30,6 +30,8 @@ module.exports = {
 
       red: "#900603",
 
+      darkRed: "#700404",
+
       gray: colors.gray,
 
       transparent: "transparent",
@@ -37,7 +39,9 @@ module.exports = {
 
     boxShadow: {
       hovering: "5px 5px 10px rgba(0,0,0,0.5)",
+      clicked: "5px 5px 10px rgba(0,0,0,0.5) inset",
     },
+
     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
