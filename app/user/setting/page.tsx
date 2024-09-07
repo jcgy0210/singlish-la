@@ -57,7 +57,6 @@ export default function SettingsPage() {
                     viewBox="0 0 24 24"
                     strokeWidth={2}
                     stroke="currentColor"
-                    className="size-6"
                   >
                     <path
                       strokeLinecap="round"
@@ -104,7 +103,6 @@ export default function SettingsPage() {
                   viewBox="0 0 24 24"
                   strokeWidth={2}
                   stroke="#900603"
-                  className="size-9"
                 >
                   <path
                     strokeLinecap="round"
@@ -129,7 +127,7 @@ export default function SettingsPage() {
                 </div>
               </div>
 
-              <Link href="\home" className="">
+              <Link href="/user/home" className="">
                 <h3>Delete Account</h3>
               </Link>
             </div>
@@ -150,7 +148,6 @@ export default function SettingsPage() {
                     viewBox="0 0 24 24"
                     strokeWidth={2}
                     stroke="#900603"
-                    className="size-9"
                   >
                     <path
                       strokeLinecap="round"
@@ -174,7 +171,6 @@ export default function SettingsPage() {
                     viewBox="0 0 24 24"
                     strokeWidth={2}
                     stroke="#900603"
-                    className="size-9"
                   >
                     <path
                       strokeLinecap="round"

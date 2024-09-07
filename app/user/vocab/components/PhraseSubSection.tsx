@@ -1,39 +1,16 @@
 import { useState } from "react";
 
 interface Prop {
-  phrase: string;
   meaning: string;
   example1: string;
   example2: string;
-  onClose: () => void;
 }
 
-const Phrases = ({ phrase, meaning, example1, example2, onClose }: Prop) => {
+const PhraseSubSection = ({ meaning, example1, example2}: Prop) => {
   const [meaningVisible, setMeaningVisibility] = useState(false);
   const [exampleVisible, setexampleVisibility] = useState(false);
   return (
-    <div className="flex flex-col p-4 rounded-md gap-4 bg-background-light dark:bg-background-dark text-lg">
-      <div className="flex flex-row">
-        <h2 className="flex-grow">{phrase}</h2>
-
-        <button className="w-10 place-self-end" onClick={onClose}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={2}
-            stroke="#900603"
-            className="size-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="m4.5 15.75 7.5-7.5 7.5 7.5"
-            />
-          </svg>
-        </button>
-      </div>
-
+    <div className="flex flex-col gap-2 p-4 dark:text-text-dark">
       {/* Meaning Section */}
       <div className="flex flex-col gap-4 border-2 border-red rounded-xl p-4">
         <div className="flex flex-row">
@@ -51,7 +28,6 @@ const Phrases = ({ phrase, meaning, example1, example2, onClose }: Prop) => {
                 viewBox="0 0 24 24"
                 strokeWidth={2}
                 stroke="#900603"
-                className="size-9"
               >
                 <path
                   strokeLinecap="round"
@@ -72,7 +48,6 @@ const Phrases = ({ phrase, meaning, example1, example2, onClose }: Prop) => {
                 viewBox="0 0 24 24"
                 strokeWidth={2}
                 stroke="#900603"
-                className="size-6"
               >
                 <path
                   strokeLinecap="round"
@@ -103,7 +78,6 @@ const Phrases = ({ phrase, meaning, example1, example2, onClose }: Prop) => {
                 viewBox="0 0 24 24"
                 strokeWidth={2}
                 stroke="#900603"
-                className="size-9"
               >
                 <path
                   strokeLinecap="round"
@@ -123,7 +97,6 @@ const Phrases = ({ phrase, meaning, example1, example2, onClose }: Prop) => {
                 viewBox="0 0 24 24"
                 strokeWidth={2}
                 stroke="#900603"
-                className="size-6"
               >
                 <path
                   strokeLinecap="round"
@@ -147,4 +120,4 @@ const Phrases = ({ phrase, meaning, example1, example2, onClose }: Prop) => {
   );
 };
 
-export default Phrases;
+export default PhraseSubSection;

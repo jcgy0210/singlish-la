@@ -54,20 +54,6 @@ body {
   }
 }
 
-.top-section {
-  position: absolute;
-  top: 16px;
-  display: grid;
-  place-content: center;
-  width: 36px;
-  height: 36px;
-}
-
-.notes-section {
-  background-color: #900603;
-  border-radius: 20px;
-}
-
 .badge {
   display: grid;
   height: 6rem;

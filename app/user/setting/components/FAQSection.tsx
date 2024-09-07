@@ -13,7 +13,6 @@ const FAQSection = ({ onClose }: Props) => {
             viewBox="0 0 24 24"
             strokeWidth={2}
             stroke="#900603"
-            className="size-10"
           >
             <path
               strokeLinecap="round"

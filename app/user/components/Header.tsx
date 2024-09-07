@@ -36,7 +36,6 @@ const Header = ({ title, onClick }: Prop) => {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="#900603"
-              className="size-10"
             >
               <path
                 strokeLinecap="round"

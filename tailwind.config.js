@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 
+const { default: shadows } = require("@mui/material/styles/shadows");
 const colors = require("tailwindcss/colors");
 
 module.exports = {
@@ -8,7 +9,9 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+
   darkMode: "class",
+
   theme: {
     colors: {
       background: {
@@ -30,6 +33,10 @@ module.exports = {
       gray: colors.gray,
 
       transparent: "transparent",
+    },
+
+    boxShadow: {
+      hovering: "5px 5px 10px rgba(0,0,0,0.5)",
     },
     extend: {
       backgroundImage: {
