@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState } from "react"
 import Menu from "@/app/user/components/Menu";
 import Header from "@/app/user/components/Header";
 import { fetchCourseByID } from "@/app/lib/data";
@@ -28,6 +28,7 @@ const courses = [
   },
 ];
 
+
 export default function CoursesPage() {
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -36,7 +37,7 @@ export default function CoursesPage() {
   );
 
   const [pageVisible, setPageVisibility] = useState(true);
-  console.log("courses: " +fetchCourseByID("1"));
+  console.log("courses: " + fetchCourseByID("1"));
 
   return (
     <main className="min-h-screen p-4 md:p-8 bg-background-light dark:bg-background-dark">

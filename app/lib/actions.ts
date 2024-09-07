@@ -17,7 +17,8 @@ const CourseFormSchema = z.object({
 })
 
 const CreateCourse = CourseFormSchema
-const UpdateCourse = CourseFormSchema.omit({course_id: true})
+const UpdateCourse = CourseFormSchema.omit({})
+const DeleteCourse = CourseFormSchema.omit({})
 
 export type CourseState = {
     errors?: {
@@ -53,12 +54,13 @@ export async function createCourse(prevState: CourseState, formData: FormData){
           message: 'Database Error: Failed to Create Course.',
         };
       }
-    //revalidatePath('/dashboard/invoices');
-    //redirect('/dashboard/invoices');
+    revalidatePath('/admin/dashboard');
+    redirect('/admin/dashboard');
 }
 
-export async function updateCourse(course_id: string, prevState: CourseState, formData: FormData){
+export async function updateCourse(prevState: CourseState, formData: FormData){
     const validatedFields = UpdateCourse.safeParse({
+        course_id: formData.get('course_id'),
         title: formData.get('title'),
         description: formData.get('description'),
     });
@@ -70,7 +72,7 @@ export async function updateCourse(course_id: string, prevState: CourseState, fo
         };
     }
     
-    const {title, description} = validatedFields.data;
+    const {course_id, title, description} = validatedFields.data;
 
     try {
         await sql`
@@ -82,20 +84,37 @@ export async function updateCourse(course_id: string, prevState: CourseState, fo
           message: 'Database Error: Failed to Update Course.',
         };
       }
-    //revalidatePath('/dashboard/invoices');
-    //redirect('/dashboard/invoices');
+      revalidatePath('/admin/dashboard');
+      redirect('/admin/dashboard');
 }
 
-export async function deleteCourse(course_id: string) {
+export async function deleteCourse(prevState: CourseState, formData: FormData) {
+      const validatedFields = DeleteCourse.safeParse({
+        course_id: formData.get('course_id'),
+      });
+    if(!validatedFields.success){
+      return {
+          errors: validatedFields.error.flatten().fieldErrors,
+          message: 'Missing Fields. Failed to Delete Course.',
+      };
+    }
+
+    const {course_id} = validatedFields.data;
+
     try {
-        await sql`DELETE FROM courses WHERE course_id = ${course_id}`;
-        //revalidatePath('/dashboard/invoices');
+        await sql`DELETE FROM courses 
+                  WHERE course_id = ${course_id}`;
+        revalidatePath('/user/courses');
+        redirect('/user/courses');
         return { message: 'Deleted Course.' };
       } catch (error) {
+        revalidatePath('/user/courses');
+        redirect('/user/courses');
         return {
           message: 'Database Error: Failed to Delete Course.',
         };
       }
+      
 }
 
 // End of Courses Actions
@@ -147,8 +166,8 @@ export async function createVocab(prevState: VocabState, formData: FormData){
           message: 'Database Error: Failed to Create Vocab.',
         };
       }
-    //revalidatePath('/dashboard/invoices');
-    //redirect('/dashboard/invoices');
+    revalidatePath('/admin/dashboard');
+    redirect('/admin/dashboard');
 }
 
 export async function updateVocab(vocab_id: string, prevState: VocabState, formData: FormData){
@@ -177,14 +196,14 @@ export async function updateVocab(vocab_id: string, prevState: VocabState, formD
           message: 'Database Error: Failed to Update Vocab.',
         };
       }
-    //revalidatePath('/dashboard/invoices');
-    //redirect('/dashboard/invoices');
+      revalidatePath('/admin/dashboard');
+      redirect('/admin/dashboard');
 }
 
 export async function deleteVocab(vocab_id: string) {
     try {
         await sql`DELETE FROM vocabList WHERE vocab_id = ${vocab_id}`;
-        //revalidatePath('/dashboard/invoices');
+        revalidatePath('/admin/dashboard');
         return { message: 'Deleted Vocab.' };
       } catch (error) {
         return {
@@ -244,8 +263,8 @@ export async function createQuestion(prevState: QuestionState, formData: FormDat
           message: 'Database Error: Failed to Create Question.',
         };
       }
-    //revalidatePath('/dashboard/invoices');
-    //redirect('/dashboard/invoices');
+      revalidatePath('/admin/dashboard');
+      redirect('/admin/dashboard');
 }
 
 export async function updateQuestion(question_id: string, prevState: QuestionState, formData: FormData){
@@ -274,14 +293,14 @@ export async function updateQuestion(question_id: string, prevState: QuestionSta
           message: 'Database Error: Failed to Update Question.',
         };
       }
-    //revalidatePath('/dashboard/invoices');
-    //redirect('/dashboard/invoices');
+      revalidatePath('/admin/dashboard');
+      redirect('/admin/dashboard');
 }
 
 export async function deleteQuestion(question_id: string) {
     try {
         await sql`DELETE FROM questions WHERE question_id = ${question_id}`;
-        //revalidatePath('/dashboard/invoices');
+        revalidatePath('/admin/dashboard');
         return { message: 'Deleted Question.' };
       } catch (error) {
         return {
@@ -303,21 +322,19 @@ export type QuizState = {
     errors?: {
         quiz_id?: string[],
         lesson_id?: string[],
-        title?: string[],
-        questions?: string[][],
+        title?: string[]
     };
     message?: string | null;
 }
 
 const CreateQuiz = QuizFormSchema.omit({});
-const UpdateQuiz = QuizFormSchema.omit({quiz_id: true, lesson_id: true});
+const UpdateQuiz = QuizFormSchema.omit({});
 
 export async function createQuiz(prevState: QuizState, formData: FormData){
     const validatedFields = CreateQuiz.safeParse({
         quiz_id: formData.get('quiz_id'),
         lesson_id: formData.get('lesson_id'),
-        title: formData.get('title'),
-        questions: formData.get('questions')
+        title: formData.get('title')
     });
 
     if(!validatedFields.success){
@@ -327,25 +344,26 @@ export async function createQuiz(prevState: QuizState, formData: FormData){
         };
     }
     
-    const {quiz_id, lesson_id, title, questions} = validatedFields.data;
+    const {quiz_id, lesson_id, title} = validatedFields.data;
 
     try {
         await sql`
-        INSERT INTO quizzes (quiz_id, lesson_id, title, questions)
-        VALUES (${quiz_id}, ${lesson_id}, ${title}, ${JSON.stringify(questions)})`
+        INSERT INTO quizzes (quiz_id, lesson_id, title)
+        VALUES (${quiz_id}, ${lesson_id}, ${title})`
     } catch (error) {
         return {
           message: 'Database Error: Failed to Create Quiz.',
         };
       }
-    //revalidatePath('/dashboard/invoices');
-    //redirect('/dashboard/invoices');
+      revalidatePath('/admin/dashboard');
+      redirect('/admin/dashboard');
 }
 
-export async function updateQuiz(quiz_id: string, prevState: QuizState, formData: FormData){
+export async function updateQuiz(prevState: QuizState, formData: FormData){
     const validatedFields = UpdateQuiz.safeParse({
-        title: formData.get('title'),
-        questions: formData.get('questions')
+        quiz_id: formData.get('quiz_id'),
+        lesson_id: formData.get('lesson_id'),
+        title: formData.get('title')
     });
 
     if(!validatedFields.success){
@@ -355,26 +373,39 @@ export async function updateQuiz(quiz_id: string, prevState: QuizState, formData
         };
     }
     
-    const {title, questions} = validatedFields.data;
+    const {quiz_id, lesson_id, title} = validatedFields.data;
+
 
     try {
         await sql`
         UPDATE quizzes
-        SET title = ${title}, questions = ${JSON.stringify(questions)}
+        SET title = ${title}}
         WHERE quiz_id = ${quiz_id}`
     } catch (error) {
         return {
           message: 'Database Error: Failed to Update Quiz.',
         };
       }
-    //revalidatePath('/dashboard/invoices');
-    //redirect('/dashboard/invoices');
+      revalidatePath('/admin/dashboard');
+      redirect('/admin/dashboard');
 }
 
-export async function deleteQuiz(quiz_id: string) {
+export async function deleteQuiz(prevState: QuizState, formData: FormData) {
+      const validatedFields = UpdateQuiz.safeParse({
+        quiz_id: formData.get('quiz_id'),
+    });
+
+    if(!validatedFields.success){
+        return {
+            errors: validatedFields.error.flatten().fieldErrors,
+            message: 'Missing Fields. Failed to Delete Quiz.',
+        };
+    }
+
+    const {quiz_id} = validatedFields.data;
     try {
         await sql`DELETE FROM quizzes WHERE question_id = ${quiz_id}`;
-        //revalidatePath('/dashboard/invoices');
+        revalidatePath('/admin/dashboard');
         return { message: 'Deleted Quiz.' };
       } catch (error) {
         return {

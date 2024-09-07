@@ -69,7 +69,7 @@ export async function fetchCourseByID(id: string){
         courses.title,
         courses.descriptions
       FROM courses
-      WHERE corses.course_id = ${id};`;
+      WHERE courses.course_id = ${id};`;
       const courses = data;
       return courses;
     } catch (error) {

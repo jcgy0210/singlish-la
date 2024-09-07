@@ -3,6 +3,9 @@
 import { useState } from "react";
 import Header from "../components/Header";
 import Menu from "../components/Menu";
+import { CourseState, createCourse, createLesson, createQuiz, deleteCourse, deleteLesson, deleteQuiz, LessonState, QuizState, updateCourse, updateLesson, updateQuiz } from "@/app/lib/actions";
+import { useFormState } from "react-dom";
+import { Courses } from "@/app/lib/definitions";
 
 type Lesson = {
   id: number;
@@ -43,7 +46,13 @@ const initialCourses: Course[] = [
   // Add more courses as needed
 ];
 
-export default function AdminPage() {
+export default function AdminPage(
+  {
+    course
+  }: {
+    course: Courses;
+  }
+) {
   const [courses, setCourses] = useState<Course[]>(initialCourses);
   const [newCourseName, setNewCourseName] = useState<string>("");
   const [newLessonName, setNewLessonName] = useState<string>("");
@@ -176,6 +185,18 @@ export default function AdminPage() {
   };
 
   const [pageVisible, setPageVisibility] = useState(true);
+
+  const courseState: CourseState = {message: null, errors: {}};
+  const [updateCourseState, updateCourseAction] = useFormState(updateCourse, courseState);
+  const [createCourseState, createCourseAction] = useFormState(createCourse, courseState);
+  const [deleteCourseState, deleteCourseAction] = useFormState(deleteCourse, courseState);
+
+  const quizState: QuizState = {message: null, errors: {}};
+  const [updateQuizState, updateQuizAction] = useFormState(updateQuiz, quizState);
+  const [createQuizState, createQuizAction] = useFormState(createQuiz, quizState);
+  const [deleteQuizState, deleteQuizAction] = useFormState(deleteQuiz, quizState);
+
+
   return (
     <main className="min-h-screen p-4 md:p-8 text-text-light dark:text-text-dark bg-background-light dark:bg-background-dark">
       {!pageVisible && <Menu onClose={() => setPageVisibility(true)}></Menu>}
@@ -189,19 +210,49 @@ export default function AdminPage() {
           
           <div className="max-w-4xl mx-auto flex flex-col gap-4 p-4">
             {/* Add New Course Section */}
+            <form action={createCourseAction}>
             <div className="flex flex-col gap-4 p-4 border bg-background-light dark:bg-background-dark rounded-lg shadow">
               <h2 className="text-red dark:text-white">Add New Course</h2>
 
               <div className="flex items-center space-x-4">
+                <div>
+                <label htmlFor="course" className="sr-only">
+                  Course Id
+                </label>
                 <input
+                  id="course_id"
+                  name="course_id"
                   type="text"
-                  placeholder="New Course Name"
-                  value={newCourseName}
-                  onChange={(e) => setNewCourseName(e.target.value)}
+                  placeholder="course id"
                   className="flex-grow p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red focus:border-transparent"
                 />
+                </div>
+                <div>
+                <label htmlFor="title" className="sr-only">
+                  Course Title
+                </label>
+                <input
+                  id="title"
+                  name="title"
+                  type="text"
+                  placeholder="course title"
+                  className="flex-grow p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red focus:border-transparent"
+                />
+                </div>
+                <div>
+                <label htmlFor="description" className="sr-only">
+                  Course Description
+                </label>
+                <input
+                  id="description"
+                  name="description"
+                  type="text"
+                  placeholder="description"
+                  className="flex-grow p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red focus:border-transparent"
+                />
+                </div>
                 <button
-                  onClick={addCourse}
+                  type="submit"
                   className="continue p-2 w-10 bg-red text-white rounded-lg"
                 >
                   <svg
@@ -221,97 +272,67 @@ export default function AdminPage() {
                 </button>
               </div>
             </div>
+            </form>
 
             {/* Edit Courses Section */}
+            <form action={updateCourseAction}>
             <div className="flex flex-col gap-4 p-4 border bg-background-light dark:bg-background-dark rounded-lg shadow">
               <h2 className="text-red dark:text-white">Edit Courses</h2>
 
               {/* Select Course */}
-              <select
-                value={selectedCourseId || ""}
-                onChange={(e) => setSelectedCourseId(parseInt(e.target.value))}
+              <label htmlFor="course_id" className="sr-only">
+                  Course Id
+                </label>
+              <input
+                id="course_id"
+                name="course_id"
+                placeholder = "1"
                 className="flex-grow p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red focus:border-transparent"
               >
-                <option value="" disabled>
-                  Select a course to edit
-                </option>
-                {courses.map((course) => (
-                  <option key={course.id} value={course.id}>
-                    {course.name}
-                  </option>
-                ))}
-              </select>
-
-              {courses.map(
-                (course) =>
-                  course.id === selectedCourseId && (
-                    <div key={course.id}>
-                      {/* Edit Course Name */}
-                      <div className="flex items-center space-x-4 mb-2">
-                        <input
-                          type="text"
-                          value={course.name}
-                          onChange={(e) =>
-                            handleCourseNameChange(course.id, e.target.value)
-                          }
-                          className="flex-grow p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red focus:border-transparent"
-                        />
-                      </div>
-
-                      {/* Edit Lessons */}
-                      <div className="flex flex-col gap-4 my-4">
-                        {course.lessons.map((lesson) => (
-                          <div
-                            key={lesson.id}
-                            className="flex items-center space-x-4"
-                          >
-                            {/* Edit LessonName */}
-                            <input
-                              type="text"
-                              value={lesson.name}
-                              onChange={(e) =>
-                                handleLessonNameChange(
-                                  course.id,
-                                  lesson.id,
-                                  e.target.value
-                                )
-                              }
-                              className="flex-grow p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red focus:border-transparent"
-                            />
-
-                            {/* Delete Lesson */}
-                            <button
-                              onClick={() => delLesson(course.id, lesson.id)}
-                              className="continue p-2 w-10 bg-red text-white rounded-lg"
-                            >
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                                fill="currentColor"
-                                className="size-6"
-                              >
-                                <path
-                                  fillRule="evenodd"
-                                  d="M16.5 4.478v.227a48.816 48.816 0 0 1 3.878.512.75.75 0 1 1-.256 1.478l-.209-.035-1.005 13.07a3 3 0 0 1-2.991 2.77H8.084a3 3 0 0 1-2.991-2.77L4.087 6.66l-.209.035a.75.75 0 0 1-.256-1.478A48.567 48.567 0 0 1 7.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a52.662 52.662 0 0 1 3.369 0c1.603.051 2.815 1.387 2.815 2.951Zm-6.136-1.452a51.196 51.196 0 0 1 3.273 0C14.39 3.05 15 3.684 15 4.478v.113a49.488 49.488 0 0 0-6 0v-.113c0-.794.609-1.428 1.364-1.452Zm-.355 5.945a.75.75 0 1 0-1.5.058l.347 9a.75.75 0 1 0 1.499-.058l-.346-9Zm5.48.058a.75.75 0 1 0-1.498-.058l-.347 9a.75.75 0 0 0 1.5.058l.345-9Z"
-                                  clipRule="evenodd"
-                                />
-                              </svg>
-                            </button>
-                          </div>
-                        ))}
-                      </div>
-
-                      {/* Add Lesson*/}
-                      <button
-                        onClick={addLesson}
-                        className="continue flex-grow p-2 bg-red text-white font-medium rounded-md"
-                      >
-                        Add Lesson
-                      </button>
-                    </div>
-                  )
-              )}
+              </input>
+              <label htmlFor="course title" className="sr-only">
+                  Course Title
+                </label>
+              <input
+                id="title"
+                name="title"
+                placeholder = "title"
+                className="flex-grow p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red focus:border-transparent"
+              >
+              </input>
+              <label htmlFor="description" className="sr-only">
+                  Course Description
+                </label>
+              <input
+                id="description"
+                name="description"
+                placeholder = "description"
+                className="flex-grow p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red focus:border-transparent"
+              >
+              </input>
+              <button type="submit" className="continue flex-grow p-2 bg-red text-white font-medium rounded-md">Save Course</button>
             </div>
+            
+            </form>
+            {/* Delete Courses Section */}
+            <form action={deleteCourseAction}>
+            <div className="flex flex-col gap-4 p-4 border bg-background-light dark:bg-background-dark rounded-lg shadow">
+              <h2 className="text-red dark:text-white">Delete Courses</h2>
+
+              {/* Select Course */}
+              <label htmlFor="course_id" className="sr-only">
+                  Course Id
+                </label>
+              <input
+                id="course_id"
+                name="course_id"
+                placeholder = "course_id"
+                className="flex-grow p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red focus:border-transparent"
+              >
+              </input>
+              <button type="submit" className="continue flex-grow p-2 bg-red text-white font-medium rounded-md">Delete Course</button>
+            </div>
+            </form>
 
             {/* Add Quiz */}
             <div className="flex flex-col gap-4 p-4 border bg-background-light dark:bg-background-dark rounded-lg shadow">
