@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import Link from "next/link"; // Import Link from next/link
+import Link from "next/link"; 
 import { authenticate } from "@/app/lib/actions";
 
 export default function LoginForm() {
@@ -18,14 +18,14 @@ export default function LoginForm() {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsPending(true);
-    setErrorMessage(undefined); // Clear previous errors
+    setErrorMessage(undefined); 
 
     try {
       const formData = new FormData();
       formData.append("email", email);
       formData.append("password", password);
 
-      const result = await authenticate(undefined, formData); // Call the authenticate function
+      const result = await authenticate(undefined, formData); 
 
       if (result) {
         setErrorMessage(result); // Set the error message from authenticate

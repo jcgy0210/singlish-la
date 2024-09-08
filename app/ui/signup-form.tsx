@@ -25,7 +25,7 @@ export default function SignupForm() {
       formData.append("email", email);
       formData.append("password", password);
 
-      const result = await register(formData); // Call the register function
+      const result = await register(formData); 
 
       // Handle errors and messages returned from the register function
       if (result.errors) {

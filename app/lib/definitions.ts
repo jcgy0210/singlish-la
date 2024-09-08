@@ -50,9 +50,9 @@ export type Quiz = {
 };
 
 export type Question = {
-    question_id: string;      // Unique identifier for each question
+    question_id: string;      
     quiz_id: string;          // Foreign key to the quiz
-    question_text: string;    // The text of the question
+    question_text: string;    
     options: string[];        // Array of possible answers
-    correct_answer: string;   // The correct answer
+    correct_answer: string;   
 };
