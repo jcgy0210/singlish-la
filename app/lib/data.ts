@@ -29,6 +29,10 @@ import {
 //   }
 
 export async function fetchVocabById(id: string) {
+  const connectionString = process.env.POSTGRES_URL;
+  if (!connectionString) {
+    throw new Error('No connection string found');
+  }
   try {
     const data = await sql<VocabList>`
       SELECT

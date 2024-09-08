@@ -4,38 +4,14 @@ import { useState, useEffect } from "react";
 import Menu from "../components/Menu";
 import Header from "../components/Header";
 import Course from "./components/Course";
-
+import { Courses } from "@/app/lib/definitions";
 import { fetchCourseByID } from "@/app/lib/data";
-
-const courses = [
-  {
-    course_id: "1",
-    title: "Course 1 - Hello",
-    description:
-      "Teach users how to engage in casual converstations with Singaporeans of different cultural backgrounds.",
-  },
-
-  {
-    course_id: "2",
-    title: "Course 2 - Makan-Makan",
-    description:
-      "Familiarise users with common Singlish expressions and vocabularies used when dining at a hawker centre.",
-  },
-
-  {
-    course_id: "3",
-    title: "Course 3 - Bojio!",
-    description:
-      "Equip users with the ability to ask for directions and recommendations for places to visit in Singapore.",
-  },
-];
 
 export default function CoursesPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [courses, setCourses] = useState<Courses[]>([]);
   const [pageVisible, setPageVisibility] = useState(true);
-
-  // Fetch courses from the database
+  
   useEffect(() => {
     const fetchCourses = async () => {
       try {
@@ -52,9 +28,9 @@ export default function CoursesPage() {
           // Access the rows property to get course data
           const course = result.rows[0]; // Adjust based on the actual structure
           return {
-            course_id: course.course_id, // Now this should work
+            course_id: course.course_id,
             title: course.title,
-            description: course.description, // Use the correct property
+            description: course.description, 
           };
         });
 
@@ -72,10 +48,7 @@ export default function CoursesPage() {
 
   const filteredCourses = courses.filter((course) =>
     course.title.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
-  const [pageVisible, setPageVisibility] = useState(true);
-  console.log("courses: " +fetchCourseByID("1"));
+  );  
 
   return (
     <main className="min-h-screen p-4 md:p-8 text-text-light dark:text-text-dark bg-background-light dark:bg-background-dark">
@@ -101,7 +74,7 @@ export default function CoursesPage() {
               {filteredCourses.length > 0 ? (
                 filteredCourses.map((course) => (
                   <li
-                    key={course.course_id} // Use course_id as key
+                    key={course.course_id}
                     className="flex flex-col gap-2 bg-background-light dark:bg-background-dark dark:text-white p-4 rounded-lg shadow-md border-2 border-red"
                   >
                     <Course
