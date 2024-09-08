@@ -22,11 +22,17 @@ const Quiz = ({ quiz, onClose }: Prop) => {
   }>({});
   const [showResults, setShowResults] = useState(false);
 
-  const handleAnswerSelect = (questionId: number, answer: string) => {
+  const [score, setScore] = useState(0);
+
+  const handleAnswerSelect = (questionId: number, answer: string, correctAnswer:string) => {
     setSelectedAnswers((prev) => ({
       ...prev,
       [questionId]: answer,
     }));
+
+    if (answer == correctAnswer) {
+      setScore(score + 1);
+    }
   };
 
   const handleSubmit = () => {
@@ -52,6 +58,7 @@ const Quiz = ({ quiz, onClose }: Prop) => {
                 <h2 className="text-xl font-semibold mb-2">
                   {question.question}
                 </h2>
+
                 <div>
                   {question.options.map((option) => (
                     <label
@@ -60,14 +67,14 @@ const Quiz = ({ quiz, onClose }: Prop) => {
                         selectedAnswers[question.id] === option
                           ? "bg-red text-white"
                           : "bg-white text-gray-700"
-                      }`}
+                      }` }
                     >
                       <input
                         type="radio"
                         name={`question-${question.id}`}
                         value={option}
                         checked={selectedAnswers[question.id] === option}
-                        onChange={() => handleAnswerSelect(question.id, option)}
+                        onChange={() => handleAnswerSelect(question.id, option, question.correctAnswer)}
                         className="hidden"
                       />
                       {option}
@@ -86,7 +93,7 @@ const Quiz = ({ quiz, onClose }: Prop) => {
         ) : (
           <div className="text-center">
             <h2 className="text-2xl font-semibold mb-4">
-              Your Score: 0 / {quiz.quizQuestions.length}
+              Your Score: {score} / {quiz.quizQuestions.length}
             </h2>
             <button
               onClick={() => window.location.reload()}
