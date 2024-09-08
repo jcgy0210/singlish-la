@@ -8,8 +8,8 @@ import { useState } from "react";
 export default function HomePage() {
   const [menuVisible, setMenuVisibility] = useState(false);
   return (
-    <main className="grid place-items-center">
-      <div className="relative flex flex-col h-auto w-96 my-20 bg-slate-100 text-black">
+    <main className="h-screen w-full flex flex-col bg-slate-100 text-black">
+      <div className="relative">
         <a href="\profile" className="top-section left-4">
           <svg
             xmlns="http://www.w3.org/2000/svg"

@@ -39,7 +39,7 @@ const Menu = ({ onClose }: Props) => {
         </svg>
       </a>
 
-      <div className="flex flex-col place-items-end my-4 pr-4 text-2xl font-bold bg-slate-500">
+      <div className="flex flex-col place-items-end my-4 pr-4 text-2xl font-bold text-black">
         <a href="\home" className="home-button my-4">
           <p>HOME</p>
         </a>

@@ -79,7 +79,7 @@ export default function AuthPage() {
             </div>
 
             <div className="flex items-center justify-between">
-              <div className="flex items-center">
+              {/* <div className="flex items-center">
                 <input
                   id="remember-me"
                   name="remember-me"
@@ -96,9 +96,9 @@ export default function AuthPage() {
                 >
                   Save login info, can ?
                 </label>
-              </div>
+              </div> */}
 
-              <div className="text-sm">
+              {/* <div className="text-sm">
                 <a
                   href="#"
                   className="text-sm font-medium"
@@ -113,7 +113,7 @@ export default function AuthPage() {
                 >
                   Forgot password ah?
                 </a>
-              </div>
+              </div> */}
             </div>
 
             <div>
